@@ -1,1 +1,3 @@
 # EduConnect
+
+read me 
