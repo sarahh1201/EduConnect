@@ -120,4 +120,12 @@ public:
             cout << array[i] << " ";
         cout << endl;
     }
+
+    bool isEmpty() const {
+        return size == 0;
+    }
+
+    void remove() {
+        pop();
+    }
 };
