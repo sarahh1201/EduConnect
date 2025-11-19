@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <queue>
-#include "headers/LinkedList.h"
+#include "headers/SessionHistory.h"
 #include "headers/BinarySearchTree.h"
 #include "headers/MinHeapTree.h"
 using namespace std;
@@ -78,5 +78,6 @@ Node* found2 = searchNode(tutorTree, 102); // Searching for tutor ID 109
     history.addSession(3, "Chemistry Review");
 
     history.display();
+
     return 0;
 }

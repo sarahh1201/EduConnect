@@ -103,6 +103,29 @@ public:
         }
     }
 
+    int pop_val()
+    {
+        if (size <= 0) // Case 1: If no value exists in the heap, return an exception
+        {
+            cout << "Error: No value exists in the min heap, what are you doing?" << endl;
+            return -1;  // Indicates that the heap is empty
+        }
+        else if (size == 1) // Case 2: Exactly one value exists in the heap
+        {
+            size--;
+            return array[0];
+        }
+        else
+        {
+            // If otherwise, set the root to array[0] temporarily, wipe the node from existence, and heapify the root to get the next lowest value into the root
+            int root = array[0];
+            array[0] = array[size - 1];
+            size--;
+            heapify(0);
+            return root;
+        }
+    }
+
     int peek() 
     {
         

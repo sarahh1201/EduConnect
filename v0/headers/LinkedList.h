@@ -2,34 +2,57 @@
 #define LINKEDLIST_H
 
 #include <iostream>
-#include <string>
 using namespace std;
 
-
-class SessionNode {
-    public:
-    int sessionID;
-    string topic;
-    SessionNode* next;
-
-    SessionNode(int id, string t) : sessionID(id), topic(t), next(nullptr) {}
-};
-
-class SessionHistory {
+template <typename T>
+class LinkedListNode {
 public:
-    SessionNode* head = nullptr;
+    T data;
+    LinkedListNode* next;
 
-    void addSession(int id, string topic) {
-        SessionNode* newNode = new SessionNode(id, topic);
+    LinkedListNode(T value) : data(value), next(nullptr) {}
+};
+template <typename T>
+class LinkedList {
+private:
+    LinkedListNode<T>* head;
+public:
+    LinkedList() : head(nullptr) {}
+
+    void insertAtEnd(T value) {
+        LinkedListNode<T>* newNode = new LinkedListNode<T>(value);
+        if (!head) {
+            head = newNode;
+            return;
+        }
+        LinkedListNode<T>* temp = head;
+        while (temp->next) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+
+    void insertAtFront(T value) {
+        LinkedListNode<T>* newNode = new LinkedListNode<T>(value);
         newNode->next = head;
         head = newNode;
     }
 
     void display() {
-        SessionNode* current = head;
+        LinkedListNode<T>* temp = head;
+        while (temp) {
+            cout << temp->data << " -> ";
+            temp = temp->next;
+        }
+        cout << "nullptr" << endl;
+    }
+    ~LinkedList() {
+        LinkedListNode<T>* current = head;
+        LinkedListNode<T>* nextNode;
         while (current) {
-            cout << "Session " << current->sessionID << ": " << current->topic << endl;
-            current = current->next;
+            nextNode = current->next;
+            delete current;
+            current = nextNode;
         }
     }
 };

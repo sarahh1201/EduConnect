@@ -1,38 +1,44 @@
 #include <iostream>
-#include <vector>
-#include "MatchingAlgorithm.h"
 #include "../headers/MinHeapTree.h"
 #include "../headers/BinarySearchTree.h"
+#include "MatchingAlgorithm.h"
 
 using namespace std;
 
 int main() {
-    // Build MinHeap with student requests
-    MinHeap minHeap(10);
-    vector<int> studentRequests = {12, 3, 7, 1, 9, 4};
-    minHeap.buildHeap(studentRequests);
-
-    cout << "Initial Student Request Heap: ";
-    minHeap.print();
-    cout << endl;
-
-    // Build tutor BST
     Node* tutorTree = nullptr;
-    int tutorIDs[] = {101, 103, 105, 107, 109, 111};
+    vector<int> tutorIDs = {101, 102, 104, 105};
     for (int id : tutorIDs) {
         tutorTree = insertNode(tutorTree, id);
     }
+    cout << "Tutor BST created.\n";
 
-    cout << "\nTutor IDs in BST (in-order traversal): ";
-    inOrderTraversal(tutorTree);
-    cout << endl << endl;
+    cout << "Create MinHeap for student requests.\n";
+    MinHeap requestHeap(10);
 
-    // Match students to tutors
-    matchStudentRequest(minHeap, tutorTree);
-    matchStudentRequest(minHeap, tutorTree);
-    matchStudentRequest(minHeap, tutorTree);
-    matchStudentRequest(minHeap, tutorTree);
-    matchStudentRequest(minHeap, tutorTree);
+    cout << "Adding student requests...\n";
+    requestHeap.insert(5);   
+    requestHeap.insert(2);   
+    requestHeap.insert(11);  
+    requestHeap.insert(3);
+    requestHeap.insert(1);
+    requestHeap.insert(0);
+    cout << "Requests added to MinHeap.\n";
+
+    cout << "\n--- Running Match #1 ---\n";
+    matchStudentRequest(requestHeap, tutorTree);
+
+    cout << "\n--- Running Match #2 ---\n";
+    matchStudentRequest(requestHeap, tutorTree);
+
+    cout << "\n--- Running Match #3 ---\n";
+    matchStudentRequest(requestHeap, tutorTree);
+
+    cout << "\n--- Running Match #4 ---\n";
+    matchStudentRequest(requestHeap, tutorTree);
+
+    cout << "\n--- Running Match #5 ---\n";
+    matchStudentRequest(requestHeap, tutorTree);
 
     return 0;
 }
