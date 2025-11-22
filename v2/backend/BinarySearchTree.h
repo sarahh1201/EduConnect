@@ -56,12 +56,12 @@ Node* searchNode(Node* root, int key) // How to find a particular node in the tr
 
 	else if (root->data < key) // Case 2: The node is greater than the key given
 	{
-		return searchNode(root->left, key); // Rerun the function to see the left child node
+		return searchNode(root->right, key); // Rerun the function to see the left child node
 	}
 
 	else if (root->data > key) // Case 3: The node is less than the key given
 	{
-		return searchNode(root->right, key); // Rerun the function to see the right child node
+		return searchNode(root->left, key); // Rerun the function to see the right child node
 	}
 
 }

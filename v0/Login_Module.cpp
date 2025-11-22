@@ -8,7 +8,7 @@
 #include <limits>
 #include <cstdio>
 #include <unordered_map>
-#include "Login_Module.h"
+#include "headers/Login_Module.h"
 using namespace std;
 
 vector<User> readUsers()
@@ -87,7 +87,7 @@ bool verify_password(const PassMap& map, const string& username, const string& p
 	}
 }
 
-bool set_password(PassMap& map, const string& username, const string& newPassword, const string& path = "credentials.txt") {
+bool set_password(PassMap& map, const string& username, const string& newPassword, const string& path = "server.txt") {
 	map[username] = newPassword; // This step solely exists to re-map a user to a new password
 	return writePassword(map, path); // Then, actually write the new password
 }
