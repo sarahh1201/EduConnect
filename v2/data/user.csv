@@ -1,10 +1,10 @@
 FirstName,LastName,Username,Password,email,SecurityQ,SecurityA,UserType
-JCameron,James,Cameron,VeryS3cure,james.cameron@example.com,Where did you grow up?,Canada,1
-HRoss,Howard,Ross,1Dunno,howard.ross@example.com,Name your favourite TV show,Friends,0
-PKindred,Philip,Kindred,J0eMama,philip.kindred@example.com,What is your mother's maiden name?,Joyce,1
-LSmith,Linda,Smith,myPass,linda.smith@example.com,What was your first pet's name?,Buddy,0
-MJohnson,Michael,Johnson,secure789,michael.johnson@example.com,What is your favorite TV show?,Modern Family,1
-EDavis,Emily,Davis,hello321,emily.davis@example.com,What city were you born in?,New York,0
-SHill,Sarah,Hill,Cats555,shill@example.com,What was your first pet's name?,Lucky,0
-BRoss,Bob,Ross,happytree,bobross@exmaple.com,What is your favorite TV show?,The Joy of Painting,1
-SJones,Sam,Jones,246cow,sjones@example.com,What is your mother's maiden name?,Smith,1
+JCameron,James,Cameron,VeryS3cure,james.cameron@example.com,Where did you grow up?,Canada
+HRoss,Howard,Ross,word456,howard.ross@example.com,Name your favourite TV show,Friends
+PKindred,Philip,Kindred,J0eMama,philip.kindred@example.com,What is your mother's maiden name?,Joyce
+LSmith,Linda,Smith,myPass,linda.smith@example.com,What was your first pet's name?,Buddy
+MJohnson,Michael,Johnson,secure789,michael.johnson@example.com,What is your favorite TV show?,Modern Family
+EDavis,Emily,Davis,hello321,emily.davis@example.com,What city were you born in?,New York
+SHill,Sarah,Hill,Cats555,shill@example.com,What was your first pet's name?,Lucky
+BRoss,Bob,Ross,happytree,bobross@exmaple.com,What is your favorite TV show?,The Joy of Painting
+SJones,Sam,Jones,246cow,sjones@example.com,What is your mother's maiden name?,Smith

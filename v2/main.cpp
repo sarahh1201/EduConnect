@@ -1,6 +1,6 @@
 #include "backend/Decode.h"
 #include "backend/Authorization.h"
-#include "backend/clearScreen.h"
+#include "backend/ClearScreen.h"
 #include "backend/BinarySearchTree.h"
 #include "backend/RequestHeap.h"
 #include "backend/RequestProcess.h"
@@ -24,13 +24,13 @@ int main() {
     cout << "Loaded session history:\n";
     sessions.display();
     
-    //password(users);
+    password(users);
 
-    SubjectsList();
+    //SubjectsList();
 
-    processRequests(requests, tutors);
+    //processRequests(requests, tutors);
     //makeRequest();
-    // makeAccount();
-    TutorSearchMenu();
+    //makeAccount();
+    //TutorSearchMenu();
     return 0;
 }

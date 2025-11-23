@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include "Decode.h"
-#include "clearScreen.h"
+#include "ClearScreen.h"
 
 using namespace std;
 
@@ -150,9 +150,9 @@ void password(vector<User>& users) {
     while (attempts < maxAttempts) {
         string userID, password;
         cout << "Enter User ID: ";
-        cin >> userID;
+        getline(cin, userID); 
         cout << "Enter Password (Type 'recover' to recover password, 'change' to change password): ";
-        cin >> password;
+        getline(cin, password); 
 
         User* user = verifyUser(users, userID, password);
         if (user) {
@@ -172,7 +172,7 @@ void password(vector<User>& users) {
 					PasswordRecovery(users,userID);
 				}
 				// Change Password
-				if (password =="change"){
+				else if (password =="change"){
 					PasswordChanger(users,userID);
 				}
 				else{

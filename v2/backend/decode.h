@@ -16,10 +16,11 @@ string tutorsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data
 string requestsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/requests.csv";
 string sessionsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/sessions.csv";
 string subjectsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/subjects.csv";
+string ratingsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/ratings.csv";
 
 // ----------------- User Struct -----------------
 struct User {
-    string firstName, lastName, username, password, email, securityQ, securityA;
+    string username, firstName, lastName, password, email, securityQ, securityA;
     int userType; // 1 = Tutor, 0 = Student
 };
 
@@ -42,6 +43,18 @@ struct Request {
     string description;
 };
 
+// ----------------- Session Struct -----------------
+struct Session
+{
+    int sessionID;
+    string subject;
+    string description;
+    int tutorID;
+    int requestID;
+    string status;
+};
+
+
 // ----------------- CSV User Loaders -----------------
 vector<User> loadUsersCSV() {
     vector<User> users;
@@ -53,9 +66,9 @@ vector<User> loadUsersCSV() {
         if (firstLine) { firstLine = false; continue; }
         stringstream ss(line);
         User u; string temp;
+        getline(ss, u.username, ',');
         getline(ss, u.firstName, ',');
         getline(ss, u.lastName, ',');
-        getline(ss, u.username, ',');
         getline(ss, u.password, ',');
         getline(ss, u.email, ',');
         getline(ss, u.securityQ, ',');
@@ -74,7 +87,6 @@ void saveUsersCSV(const vector<User>& users) {
         return;
     }
 
-    // Optional: write header
     file << "FirstName,LastName,Username,Password,email,SecurityQ,SecurityA,UserType\n";
 
     for (const auto& u : users) {
@@ -167,6 +179,44 @@ void saveRequestsCSV(const vector<Request>& requests) {
 
     file.close();
 }
+/*
+void removeRequestFromCSV(int requestID) {
+    // Load all requests
+    std::ifstream inFile(requestsDataPath);
+    std::vector<std::string> lines;
+    std::string line;
+    
+    if (!inFile.is_open()) {
+        std::cerr << "Cannot open file!\n";
+        return;
+    }
+
+    // Read all lines
+    while (getline(inFile, line)) {
+        lines.push_back(line);
+    }
+    inFile.close();
+
+    // Remove the line containing the requestID
+    lines.erase(std::remove_if(lines.begin(), lines.end(),
+        [requestID](const std::string& l) {
+            std::stringstream ss(l);
+            std::string firstCol;
+            getline(ss, firstCol, ',');  // get the first column (assume requestID is first)
+            try {
+                return std::stoi(firstCol) == requestID;
+            } catch (...) {
+                return false;
+            }
+        }), lines.end());
+
+    // Rewrite the file
+    std::ofstream outFile(filePath, std::ios::trunc);
+    for (const auto& l : lines) {
+        outFile << l << "\n";
+    }
+    outFile.close();
+}*/
 
 MinHeap* buildRequestHeapFromCSV() {
     vector<Request> requests = loadRequestsCSV(); // loads from CSV
@@ -189,14 +239,44 @@ SessionHistory loadSessionsCSV() {
     while (getline(file, line)) {
         if (firstLine) { firstLine = false; continue; }
         stringstream ss(line);
-        int id; string topic;
+        int id; string subject, description,status;
         string temp;
         getline(ss, temp, ','); id = stoi(temp);
-        getline(ss, topic, ',');
-        history.addSession(id, topic);
+        getline(ss, subject, ',');
+        getline(ss, description, ',');
+        getline(ss, temp, ','); int tutorID = stoi(temp);
+        getline(ss, temp, ','); int requestID = stoi(temp);
+        getline(ss, status, ',');
+        //history.addSession(id, subject, description, tutorID, requestID, status);
     }
     return history;
 }
+
+/*
+void saveSessionsCSV(const SessionHistory& history) {
+    ofstream file(sessionsDataPath, ios::trunc); // Clear + rewrite
+
+    if (!file.is_open()) {
+        cerr << "ERROR: Could not open sessions CSV for writing!" << endl;
+        return;
+    }
+
+    // Optional: write header
+    file << "sessionID,subject,description,tutorID,requestID,status\n";
+
+    SessionNode* current = history.head;
+    while (current) {
+        file << current->sessionID << ","
+             << current->subject << ","
+             << current->description << ","
+             << current->tutorID << ","
+             << current->requestID << ","
+             << current->status << "\n";
+        current = current->next;
+    }
+
+    file.close();
+}*/
 
 // ----------------- CSV Subject Loaders -----------------
 const vector<string> loadSubjectsCSV() {

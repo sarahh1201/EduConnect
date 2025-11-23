@@ -1,4 +1,4 @@
-sessionID,topic
-1,Algebra
-2,English Grammar
-3,Chemistry Review
+sessionID,subject,description,tutorID,requestID,status
+1,Algebra,Basic algebra concepts,101,201,completed
+2,English Grammar,Advanced grammar rules,102,202,scheduled
+3,Chemistry Review,Organic chemistry topics,103,203,in progress

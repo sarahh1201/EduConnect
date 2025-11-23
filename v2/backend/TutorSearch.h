@@ -6,7 +6,7 @@
 #include <sstream>
 #include <algorithm>
 #include <cctype>
-#include "clearScreen.h"
+#include "ClearScreen.h"
 #include "Decode.h"
 
 using namespace std;
@@ -29,24 +29,26 @@ void SearchTutorID()
     vector<Tutor> tutors = loadTutorsCSV();
     bool found = false;
 
-    for (const Tutor& t :tutors)
-    {
-        if (t.tutorID == inputId) {
-            cout << endl << "Tutor #" << t.tutorID << endl;
-            cout << "----------" << endl;
-            cout << "Name: " << t.name << endl;
-            cout << "Subjects: ";
-            for (const string& sub : t.subjects) {
-                cout << sub << " ";
-            }
-            cout << endl;
-            cout << "Rating: " << t.rating << endl;
-            cout << "Email: " << t.email << endl;
-            cout << "Available: " << (t.available ? "Yes" : "No") << endl;
-            found = true;
-            break;
+    unordered_map<int, Tutor> tutorByID;
+    for (const Tutor& t : tutors)
+        tutorByID[t.tutorID] = t;
+
+    if (tutorByID.find(inputId) != tutorByID.end()) {
+        const Tutor& t = tutorByID[inputId];
+        cout << endl << "Tutor #" << t.tutorID << endl;
+        cout << "----------" << endl;
+        cout << "Name: " << t.name << endl;
+        cout << "Subjects: ";
+        for (const string& sub : t.subjects) {
+            cout << sub << " ";
         }
-    }
+        cout << endl;
+        cout << "Rating: " << t.rating << endl;
+        cout << "Email: " << t.email << endl;
+        cout << "Available: " << (t.available ? "Yes" : "No") << endl;
+        found = true;
+    }  
+    
     if (!found) {
         cout << "No Tutor exists under this ID." << endl;
     }
@@ -82,18 +84,25 @@ void SearchSubject() // All the other search algorithms are some modification of
 	cout << endl << "Selected Subject: " << Subject << endl; // Just segments the subject chosen and tutors to be printed
 	cout << "--------------------------------" << endl;
     
-    for (const Tutor& t : tutors)
+    unordered_map<string, vector<Tutor*>> tutorsBySubject;
+    for (Tutor& t : tutors) {
+        for (const string& sub : t.subjects)
+            tutorsBySubject[sub].push_back(&t);
+    }
+
+    if (tutorsBySubject.find(Subject) != tutorsBySubject.end()) // And we compare if they match. If so, we return the tutor's details
     {
-        if (find(t.subjects.begin(), t.subjects.end(), Subject) != t.subjects.end()) // And we compare if they match. If so, we return the tutor's details
+        for (Tutor* t : tutorsBySubject[Subject])
         {
-            cout << endl << "Tutor #" << t.tutorID << endl;
+            cout << endl << "Tutor #" << t->tutorID << endl;
             cout << "----------" << endl;
-            cout << "Name: " << t.name << endl;
-            cout << "Rating: " << t.rating << endl;
-            cout << "Email: " << t.email << endl;
+            cout << "Name: " << t->name << endl;
+            cout << "Rating: " << t->rating << endl;
+            cout << "Email: " << t->email << endl;
             continue; // Since multiple tutors can teach one subject, this function should run until it reaches the end of the table, retrieving every valid tutor as well.
         }
     }
+    
 }
 
 void SearchTutorName() // All the other search algorithms are some modification of the ID one, with some caveats:
