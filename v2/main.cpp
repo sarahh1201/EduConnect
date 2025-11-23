@@ -5,6 +5,7 @@
 #include "backend/RequestHeap.h"
 #include "backend/RequestProcess.h"
 #include "backend/MakeRequest.h"
+#include "backend/CreateAccount.h"
 
 
 int main() {
@@ -27,6 +28,7 @@ int main() {
     SubjectsList();
 
     processRequests(requests, tutors);
-    makeRequest();
+    //makeRequest();
+    makeAccount();
 
 }

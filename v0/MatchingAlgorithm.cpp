@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../headers/MinHeapTree.h"
 #include "../headers/BinarySearchTree.h"
-#include "MatchingAlgorithm.h"
+#include "../headers/MatchingAlgorithm.h"
 
 using namespace std;
 

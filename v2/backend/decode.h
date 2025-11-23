@@ -28,6 +28,7 @@ struct Tutor {
     int tutorID;
     string name;
     vector<string> subjects;
+    string email;
     double rating;       
     bool available;
 };

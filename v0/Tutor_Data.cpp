@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "Tutor_Data.h"
+#include "headers/Tutor_Data.h"
 
 using namespace std;
 
@@ -63,7 +63,7 @@ void TutorSearchMenu()
 
 int main()
 {
-	// createCSVTemp(); // Use this operation to create the temp CSV file
+	//createCSVTemp(); // Use this operation to create the temp CSV file
 	TutorSearchMenu(); // For our use case, we want this to act like a sort of 'Tutor Search' platform to return a Tutor's profile
 	return 0;
 }
