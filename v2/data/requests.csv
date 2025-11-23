@@ -1,4 +1,5 @@
-requestID,studentUsername,subject,urgency
-1,HRoss,Math,2
-2,LSmith,Chemistry,1
-3,EDavis,English,3
+requestID,studentUsername,subject,urgency,description
+1,HRoss,Math,5,Needs help with calculus
+2,LSmith,Chemistry,3,Struggling with organic chemistry
+3,EDavis,English,4,Looking for essay writing tips
+4,MJohnson,Physics,2,Understanding Newton's laws

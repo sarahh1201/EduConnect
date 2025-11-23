@@ -1,11 +1,11 @@
-subjectID,name
-1,Math
-2,English
-3,Chemistry
-4,Biology
-5,History
-6,Art
-7,Computer Science
-8,Physics
-9,Economics
-10,Music
+subject
+Math
+English
+Chemistry
+Biology
+History
+Art
+Computer Science
+Physics
+Economics
+Music

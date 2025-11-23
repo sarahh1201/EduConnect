@@ -1,4 +1,7 @@
-tutorID,name,subjects
-101,James,Math;English
-102,Michael,Chemistry;Physics
-103,Philip,Biology;History
+tutorID,name,subjects,rating,available 
+101,James,Math;English,4.5,true
+102,Michael,Chemistry;Physics,4.7,true
+103,Philip,Biology;History,4.2,false
+104,Emily,Art;Music,4.8,true
+105,Linda,Computer Science;Economics,4.6,false
+106,Howard,Math;Computer Science,4.3,true

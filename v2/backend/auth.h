@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include "decode.h"
+#include "Decode.h"
 #include "clearScreen.h"
 
 using namespace std;
@@ -17,6 +17,7 @@ User* verifyUser(vector<User>& users, const string& username, const string& pass
     return nullptr;
 }
 
+// Helper function to find user by username
 User* findUserByUsername(const string& username, vector<User>& users) {
     for (auto& u : users) {
         if (u.username == username) {
@@ -26,6 +27,7 @@ User* findUserByUsername(const string& username, vector<User>& users) {
     return nullptr; // not found
 }
 
+// ----------------- Password Recovery -----------------
 void PasswordRecovery(vector<User>& users, const string& user) // Asks the user a security question, and if they get it correct present the current password in the 'server'
 {
 	User* userPtr = findUserByUsername(user, users);
@@ -65,6 +67,7 @@ void PasswordRecovery(vector<User>& users, const string& user) // Asks the user 
 	return;		
 }
 
+// ----------------- Password Changer -----------------
 void PasswordChanger(vector<User>& users, const string& user) // Does exactly what's on the tin
 { 
 	User* userPtr = findUserByUsername(user, users);
@@ -109,7 +112,7 @@ void PasswordChanger(vector<User>& users, const string& user) // Does exactly wh
 			if (newPassword == confirmPassword) // If both new passwords match, change it!
 			{
 				userPtr->password = newPassword; // Change the password in the 'server'
-				saveUsersCSV("/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/user.csv", users);
+				saveUsersCSV(users);
 				cout << "Password successfully changed!" << endl;
 				return;
 			}

@@ -63,7 +63,7 @@ Node* searchNode(Node* root, int key) // How to find a particular node in the tr
 	{
 		return searchNode(root->left, key); // Rerun the function to see the right child node
 	}
-
+	return nullptr; // If nothing matches up, return null
 }
 
 Node* minValueNode(Node* node) // To find the lowest valued node

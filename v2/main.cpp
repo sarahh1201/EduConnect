@@ -1,20 +1,31 @@
-#include "backend/decode.h"
+#include "backend/Decode.h"
 #include "backend/auth.h"
 #include "backend/clearScreen.h"
+#include "backend/BinarySearchTree.h"
+#include "backend/RequestHeap.h"
+#include "backend/RequestAlgorithm.h"
+
 
 int main() {
-    vector<User> users = loadUsersCSV("/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/user.csv");
-    vector<Tutor> tutors = loadTutorsCSV("/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/tutors.csv");
-    vector<Request> requests = loadRequestsCSV("/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/requests.csv");
-    SessionHistory sessions = loadSessionsCSV("/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/sessions.csv");
+
+    // Load data from CSV files
+    vector<User> users = loadUsersCSV();
+    vector<Tutor> tutors = loadTutorsCSV();
+    vector<Request> requests = loadRequestsCSV();
+    SessionHistory sessions = loadSessionsCSV();
+    vector<string> subjects = loadSubjectsCSV();
 
     cout << "Loaded " << users.size() << " users.\n";
     cout << "Loaded " << tutors.size() << " tutors.\n";
     cout << "Loaded " << requests.size() << " requests.\n";
+    cout << "Loaded " << subjects.size() << " subjects.\n";
     cout << "Loaded session history:\n";
-
-    password(users);
+    clearScreen_verify();
+    //password(users);
     
     sessions.display();
+    SubjectsList();
+
+    processRequests(requests, tutors);
 
 }
