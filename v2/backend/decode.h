@@ -104,6 +104,7 @@ vector<Tutor> loadTutorsCSV() {
         getline(ss, temp, ','); t.tutorID = stoi(temp);
         getline(ss, t.name, ',');
         getline(ss, subjects, ',');
+        getline(ss, t.email, ',');
         getline(ss, temp, ','); t.rating = stod(temp);
         getline(ss, temp, ','); t.available = (temp == "true");
         stringstream substream(subjects);
@@ -142,6 +143,28 @@ vector<Request> loadRequestsCSV() {
         requests.push_back(r);
     }
     return requests;
+}
+
+void saveRequestsCSV(const vector<Request>& requests) {
+    ofstream file(requestsDataPath, ios::trunc); // Clear + rewrite
+
+    if (!file.is_open()) {
+        cerr << "ERROR: Could not open requests CSV for writing!" << endl;
+        return;
+    }
+
+    // Optional: write header
+    file << "FirstName,LastName,Username,Password,email,SecurityQ,SecurityA,UserType\n";
+
+    for (const auto& r : requests) {
+        file << r.requestID << ","
+             << r.studentUsername << ","
+             << r.subject << ","
+             << r.urgency << ","
+             << r.description << "\n";
+    }
+
+    file.close();
 }
 
 MinHeap* buildRequestHeapFromCSV() {

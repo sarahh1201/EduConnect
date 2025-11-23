@@ -151,7 +151,7 @@ void password(vector<User>& users) {
         string userID, password;
         cout << "Enter User ID: ";
         cin >> userID;
-        cout << "Enter Password: ";
+        cout << "Enter Password (Type 'recover' to recover password, 'change' to change password): ";
         cin >> password;
 
         User* user = verifyUser(users, userID, password);
