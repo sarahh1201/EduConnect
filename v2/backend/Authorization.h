@@ -44,9 +44,8 @@ void PasswordRecovery(vector<User>& users, const string& user) // Asks the user 
 	cout << "Here is your defined security question:" << endl;
 	string input; // Just the user's input
     int screwUps = 0; // How long the system will be locked out if you keep mucking it up
-	cin.ignore(); // Stops any unnecessary overflow
-
 	cout << userPtr->securityQ << " ";
+	
 	while (screwUps < 3) // Max of 3 attempts to get this right
 	{
 		cout << "Your Answer: ";

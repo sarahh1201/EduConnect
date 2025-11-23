@@ -87,7 +87,7 @@ void saveUsersCSV(const vector<User>& users) {
         return;
     }
 
-    file << "FirstName,LastName,Username,Password,email,SecurityQ,SecurityA,UserType\n";
+    file << "Username,FirstName,LastName,Password,email,SecurityQ,SecurityA,UserType\n";
 
     for (const auto& u : users) {
         file << u.username << ","
@@ -96,7 +96,8 @@ void saveUsersCSV(const vector<User>& users) {
              << u.password << ","
              << u.email << ","
              << u.securityQ << ","
-             << u.securityA << "\n";
+             << u.securityA << ","
+             << u.userType << "\n";
     }
 
     file.close();
