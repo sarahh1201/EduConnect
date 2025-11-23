@@ -19,23 +19,26 @@ string subjectsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Da
 string ratingsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/ratings.csv";
 
 // ----------------- User Struct -----------------
-struct User {
+struct User
+{
     string username, firstName, lastName, password, email, securityQ, securityA;
     int userType; // 1 = Tutor, 0 = Student
 };
 
 // ----------------- Tutor Struct -----------------
-struct Tutor {
+struct Tutor
+{
     int tutorID;
     string name;
     vector<string> subjects;
     string email;
-    double rating;       
+    double rating;
     bool available;
 };
 
 // ----------------- Student Request Struct -----------------
-struct Request {
+struct Request
+{
     int requestID;
     string studentUsername;
     string subject;
@@ -54,18 +57,29 @@ struct Session
     string status;
 };
 
-
 // ----------------- CSV User Loaders -----------------
-vector<User> loadUsersCSV() {
+vector<User> loadUsersCSV()
+{
     vector<User> users;
     ifstream file(userDataPath);
-    if (!file.is_open()) { cerr << "Cannot open " << userDataPath << endl; return users; }
+    if (!file.is_open())
+    {
+        cerr << "Cannot open " << userDataPath << endl;
+        return users;
+    }
 
-    string line; bool firstLine = true;
-    while (getline(file, line)) {
-        if (firstLine) { firstLine = false; continue; }
+    string line;
+    bool firstLine = true;
+    while (getline(file, line))
+    {
+        if (firstLine)
+        {
+            firstLine = false;
+            continue;
+        }
         stringstream ss(line);
-        User u; string temp;
+        User u;
+        string temp;
         getline(ss, u.username, ',');
         getline(ss, u.firstName, ',');
         getline(ss, u.lastName, ',');
@@ -73,23 +87,27 @@ vector<User> loadUsersCSV() {
         getline(ss, u.email, ',');
         getline(ss, u.securityQ, ',');
         getline(ss, u.securityA, ',');
-        getline(ss, temp, ','); u.userType = stoi(temp);
+        getline(ss, temp, ',');
+        u.userType = stoi(temp);
         users.push_back(u);
     }
     return users;
 }
 
-void saveUsersCSV(const vector<User>& users) {
+void saveUsersCSV(const vector<User> &users)
+{
     ofstream file(userDataPath, ios::trunc); // Clear + rewrite
 
-    if (!file.is_open()) {
+    if (!file.is_open())
+    {
         cerr << "ERROR: Could not open users CSV for writing!" << endl;
         return;
     }
 
     file << "Username,FirstName,LastName,Password,email,SecurityQ,SecurityA,UserType\n";
 
-    for (const auto& u : users) {
+    for (const auto &u : users)
+    {
         file << u.username << ","
              << u.firstName << ","
              << u.lastName << ","
@@ -104,35 +122,54 @@ void saveUsersCSV(const vector<User>& users) {
 }
 
 // ----------------- CSV Tutor Loaders -----------------
-vector<Tutor> loadTutorsCSV() {
+vector<Tutor> loadTutorsCSV()
+{
     vector<Tutor> tutors;
     ifstream file(tutorsDataPath);
-    if (!file.is_open()) { cerr << "Cannot open " << tutorsDataPath << endl; return tutors; }
+    if (!file.is_open())
+    {
+        cerr << "Cannot open " << tutorsDataPath << endl;
+        return tutors;
+    }
 
-    string line; bool firstLine = true;
-    while (getline(file, line)) {
-        if (firstLine) { firstLine = false; continue; }
+    string line;
+    bool firstLine = true;
+    while (getline(file, line))
+    {
+        if (firstLine)
+        {
+            firstLine = false;
+            continue;
+        }
         stringstream ss(line);
-        Tutor t; string subjects;
+        Tutor t;
+        string subjects;
         string temp;
-        getline(ss, temp, ','); t.tutorID = stoi(temp);
+        getline(ss, temp, ',');
+        t.tutorID = stoi(temp);
         getline(ss, t.name, ',');
         getline(ss, subjects, ',');
         getline(ss, t.email, ',');
-        getline(ss, temp, ','); t.rating = stod(temp);
-        getline(ss, temp, ','); t.available = (temp == "true");
+        getline(ss, temp, ',');
+        t.rating = stod(temp);
+        getline(ss, temp, ',');
+        t.available = (temp == "true");
         stringstream substream(subjects);
-        string sub; while(getline(substream, sub, ';')) t.subjects.push_back(sub);
+        string sub;
+        while (getline(substream, sub, ';'))
+            t.subjects.push_back(sub);
         tutors.push_back(t);
     }
     return tutors;
 }
 
-Node* buildTutorTreeFromCSV() {
+Node *buildTutorTreeFromCSV()
+{
     vector<Tutor> tutors = loadTutorsCSV(); // loads from CSV
-    Node* root = nullptr;
+    Node *root = nullptr;
 
-    for (const Tutor& t : tutors) {
+    for (const Tutor &t : tutors)
+    {
         root = insertNode(root, t.tutorID);
     }
 
@@ -140,90 +177,119 @@ Node* buildTutorTreeFromCSV() {
 }
 
 // ----------------- CSV Request Loaders -----------------
-vector<Request> loadRequestsCSV() {
+vector<Request> loadRequestsCSV()
+{
     vector<Request> requests;
     ifstream file(requestsDataPath);
-    if (!file.is_open()) { cerr << "Cannot open " << requestsDataPath << endl; return requests; }
+    if (!file.is_open())
+    {
+        cerr << "Cannot open " << requestsDataPath << endl;
+        return requests;
+    }
 
-    string line; bool firstLine = true;
-    while (getline(file, line)) {
-        if (firstLine) { firstLine = false; continue; }
-        stringstream ss(line); Request r; string temp;
-        getline(ss, temp, ','); r.requestID = stoi(temp);
+    string line;
+    bool firstLine = true;
+    while (getline(file, line))
+    {
+        if (firstLine)
+        {
+            firstLine = false;
+            continue;
+        }
+        stringstream ss(line);
+        Request r;
+        string temp;
+        getline(ss, temp, ',');
+        r.requestID = stoi(temp);
         getline(ss, r.studentUsername, ',');
         getline(ss, r.subject, ',');
-        getline(ss, temp, ','); r.urgency = stoi(temp);
+        getline(ss, temp, ',');
+        r.urgency = stoi(temp);
         getline(ss, r.description, ',');
         requests.push_back(r);
     }
     return requests;
 }
 
-void saveRequestsCSV(const vector<Request>& requests) {
-    ofstream file(requestsDataPath, ios::trunc); // Clear + rewrite
-
-    if (!file.is_open()) {
-        cerr << "ERROR: Could not open requests CSV for writing!" << endl;
+void saveRequestsCSV(const vector<Request> &requests)
+{
+    ofstream file(requestsDataPath, ios::trunc);
+    if (!file.is_open())
+    {
+        cerr << "Cannot open requests CSV for writing!\n";
         return;
     }
-
-    // Optional: write header
-    file << "FirstName,LastName,Username,Password,email,SecurityQ,SecurityA,UserType\n";
-
-    for (const auto& r : requests) {
+    file << "requestID,studentUsername,subject,urgency,description\n"; // correct header
+    for (const auto &r : requests)
+    {
         file << r.requestID << ","
              << r.studentUsername << ","
              << r.subject << ","
              << r.urgency << ","
              << r.description << "\n";
     }
-
     file.close();
 }
-/*
-void removeRequestFromCSV(int requestID) {
-    // Load all requests
-    std::ifstream inFile(requestsDataPath);
-    std::vector<std::string> lines;
-    std::string line;
-    
-    if (!inFile.is_open()) {
-        std::cerr << "Cannot open file!\n";
+
+void removeRequestFromCSV(int requestID)
+{
+    ifstream inFile(requestsDataPath);
+    if (!inFile.is_open())
+    {
+        cerr << "Cannot open file!\n";
         return;
     }
 
-    // Read all lines
-    while (getline(inFile, line)) {
+    string header;
+    getline(inFile, header); // store header to preserve it
+    vector<string> lines;
+    string line;
+
+    while (getline(inFile, line))
+    {
         lines.push_back(line);
     }
     inFile.close();
 
-    // Remove the line containing the requestID
-    lines.erase(std::remove_if(lines.begin(), lines.end(),
-        [requestID](const std::string& l) {
-            std::stringstream ss(l);
-            std::string firstCol;
-            getline(ss, firstCol, ',');  // get the first column (assume requestID is first)
-            try {
-                return std::stoi(firstCol) == requestID;
-            } catch (...) {
-                return false;
-            }
-        }), lines.end());
+    // Remove the line with the matching requestID
+    lines.erase(
+        remove_if(lines.begin(), lines.end(),
+                  [requestID](const string &l)
+                  {
+                      stringstream ss(l);
+                      string firstCol;
+                      getline(ss, firstCol, ',');
+                      try
+                      {
+                          return stoi(firstCol) == requestID;
+                      }
+                      catch (...)
+                      {
+                          return false;
+                      }
+                  }),
+        lines.end());
 
-    // Rewrite the file
-    std::ofstream outFile(filePath, std::ios::trunc);
-    for (const auto& l : lines) {
-        outFile << l << "\n";
+    // Rewrite the file with header
+    ofstream outFile(requestsDataPath, ios::trunc);
+    if (!outFile.is_open())
+    {
+        cerr << "Cannot open file for writing!\n";
+        return;
     }
+    outFile << header << "\n";
+    for (const auto &l : lines)
+        outFile << l << "\n";
     outFile.close();
-}*/
+}
 
-MinHeap* buildRequestHeapFromCSV() {
+MinHeap *buildRequestHeapFromCSV()
+{
     vector<Request> requests = loadRequestsCSV(); // loads from CSV
-    MinHeap* heap = new MinHeap(100); // assuming max 100 requests
+    MinHeap *heap = new MinHeap(100);             // assuming max 100 requests
 
-    for (const Request& r : requests) {
+    for (const Request &r : requests)
+    {
         heap->insert(r.requestID); // using requestID as the key
     }
 
@@ -231,73 +297,99 @@ MinHeap* buildRequestHeapFromCSV() {
 }
 
 // ----------------- CSV Session History Loaders -----------------
-SessionHistory loadSessionsCSV() {
+SessionHistory loadSessionsCSV()
+{
     SessionHistory history;
     ifstream file(sessionsDataPath);
-    if (!file.is_open()) { cerr << "Cannot open " << sessionsDataPath << endl; return history; }
+    if (!file.is_open())
+    {
+        cerr << "Cannot open " << sessionsDataPath << endl;
+        return history;
+    }
 
-    string line; bool firstLine = true;
-    while (getline(file, line)) {
-        if (firstLine) { firstLine = false; continue; }
+    string line;
+    bool firstLine = true;
+    while (getline(file, line))
+    {
+        if (firstLine)
+        {
+            firstLine = false;
+            continue;
+        }
         stringstream ss(line);
-        int id; string subject, description,status;
+        int id;
+        string subject, description, status;
         string temp;
-        getline(ss, temp, ','); id = stoi(temp);
+        getline(ss, temp, ',');
+        id = stoi(temp);
         getline(ss, subject, ',');
         getline(ss, description, ',');
-        getline(ss, temp, ','); int tutorID = stoi(temp);
-        getline(ss, temp, ','); int requestID = stoi(temp);
+        getline(ss, temp, ',');
+        int tutorID = stoi(temp);
+        getline(ss, temp, ',');
+        int requestID = stoi(temp);
         getline(ss, status, ',');
-        //history.addSession(id, subject, description, tutorID, requestID, status);
+        Session s{id, subject, description, tutorID, requestID, status};
+        history.addSession(s);
     }
     return history;
 }
 
-/*
-void saveSessionsCSV(const SessionHistory& history) {
-    ofstream file(sessionsDataPath, ios::trunc); // Clear + rewrite
-
-    if (!file.is_open()) {
-        cerr << "ERROR: Could not open sessions CSV for writing!" << endl;
+void saveSessionsCSV(const SessionHistory &history)
+{
+    ofstream file(sessionsDataPath, ios::trunc);
+    if (!file.is_open())
+    {
+        cerr << "Cannot open sessions CSV for writing!\n";
         return;
     }
-
-    // Optional: write header
     file << "sessionID,subject,description,tutorID,requestID,status\n";
 
-    SessionNode* current = history.head;
-    while (current) {
-        file << current->sessionID << ","
-             << current->subject << ","
-             << current->description << ","
-             << current->tutorID << ","
-             << current->requestID << ","
-             << current->status << "\n";
+    SessionNode *current = history.head;
+    while (current)
+    {
+        file << current->data.sessionID << ","
+             << current->data.subject << ","
+             << current->data.description << ","
+             << current->data.tutorID << ","
+             << current->data.requestID << ","
+             << current->data.status << "\n";
         current = current->next;
     }
-
     file.close();
-}*/
+}
 
 // ----------------- CSV Subject Loaders -----------------
-const vector<string> loadSubjectsCSV() {
+const vector<string> loadSubjectsCSV()
+{
     vector<string> subjects;
     ifstream file(subjectsDataPath);
-    if (!file.is_open()) { cerr << "Cannot open " << subjectsDataPath << endl; return subjects; }
+    if (!file.is_open())
+    {
+        cerr << "Cannot open " << subjectsDataPath << endl;
+        return subjects;
+    }
 
-    string line; bool firstLine = true;
-    while (getline(file, line)) {
-        if (firstLine) { firstLine = false; continue; }
+    string line;
+    bool firstLine = true;
+    while (getline(file, line))
+    {
+        if (firstLine)
+        {
+            firstLine = false;
+            continue;
+        }
         subjects.push_back(line);
     }
     return subjects;
 }
 
-void SubjectsList() {
+void SubjectsList()
+{
     vector<string> subjects = loadSubjectsCSV();
     cout << "Available Subjects:\n";
-    for (const auto& subject : subjects) {
+    for (const auto &subject : subjects)
+    {
         cout << "- " << subject << endl;
     }
 }
-

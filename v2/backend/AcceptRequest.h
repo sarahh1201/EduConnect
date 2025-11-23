@@ -1,32 +1,60 @@
-/*#include "Decode.h"
+#include "Decode.h"
+#include "SessionHistory.h"
 #include <iostream>
 using namespace std;
 
-void UpdateRequestStatus(int reqID) {
+void UpdateRequestStatus(int reqID)
+{
     vector<Request> requests = loadRequestsCSV();
+
+    // Find the request
+    auto it = find_if(requests.begin(), requests.end(),
+                      [reqID](const Request &r)
+                      { return r.requestID == reqID; });
+    if (it == requests.end())
+    {
+        cout << "Request ID not found." << endl;
+        return;
+    }
+    Request acceptedRequest = *it;
+
+    // Remove request from CSV
     removeRequestFromCSV(reqID);
 
-    SessionHistory history;
-    for (const auto& r : requests) {
-        history.addSession(r.requestID, r.subject, r.description, 0, r.requestID, "accepted");
-    }
+    // Load existing sessions, add new session
+    SessionHistory history = loadSessionsCSV();
+    Session newSession{
+        acceptedRequest.requestID,   // sessionID
+        acceptedRequest.subject,     // subject
+        acceptedRequest.description, // description
+        0,                           // tutorID (can assign later)
+        acceptedRequest.requestID,   // requestID
+        "accepted"                   // status
+    };
+    history.addSession(newSession);
+
+    // Save updated sessions
     saveSessionsCSV(history);
+
+    cout << "Request " << reqID << " accepted and session created.\n";
 }
 
-
-void AcceptRequest() {
-    Request* req;
+void AcceptRequest()
+{
+    Request *req;
     cout << "Enter Request ID to accept: ";
     int reqID;
     cin >> reqID;
 
     vector<Request> requests = loadRequestsCSV();
-    for (const auto& r : requests) {
-        if (r.requestID == reqID) {
+    for (const auto &r : requests)
+    {
+        if (r.requestID == reqID)
+        {
             req = new Request(r);
             cout << "Request ID " << reqID << " accepted." << endl;
             UpdateRequestStatus(reqID);
-        
+
             // Further processing can be done here
             return;
         }
@@ -34,10 +62,12 @@ void AcceptRequest() {
     cout << "Request ID " << reqID << " not found." << endl;
 }
 
-void ViewRequests() {
+void ViewRequests()
+{
     vector<Request> requests = loadRequestsCSV();
     cout << "Current Requests:\n";
-    for (const auto& req : requests) {
+    for (const auto &req : requests)
+    {
         cout << "Request ID: " << req.requestID
              << " | Student: " << req.studentUsername
              << " | Subject: " << req.subject
@@ -45,4 +75,3 @@ void ViewRequests() {
              << " | Description: " << req.description << endl;
     }
 }
-*/

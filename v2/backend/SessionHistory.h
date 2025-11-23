@@ -1,36 +1,45 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#pragma once
 
 #include <iostream>
 #include <string>
 using namespace std;
 
-
-class SessionNode {
-    public:
+struct Session{
     int sessionID;
-    string topic;
-    SessionNode* next;
-
-    SessionNode(int id, string t) : sessionID(id), topic(t), next(nullptr) {}
+    string subject;
+    string description;
+    int tutorID;
+    int requestID;
+    string status;
 };
 
-class SessionHistory {
-public:
+struct SessionNode {
+    Session data;       // the actual session info
+    SessionNode* next;  // pointer to next node
+
+    SessionNode(Session s) : data(s), next(nullptr) {}
+};
+
+struct SessionHistory {
     SessionNode* head = nullptr;
 
-    void addSession(int id, string topic) {
-        SessionNode* newNode = new SessionNode(id, topic);
+    void addSession(Session s) {
+        SessionNode* newNode = new SessionNode(s);
         newNode->next = head;
         head = newNode;
     }
 
-    void display() {
+    void display() const {
         SessionNode* current = head;
         while (current) {
-            cout << "Session " << current->sessionID << ": " << current->topic << endl;
+            cout << "Session " << current->data.sessionID 
+                 << ": " << current->data.subject
+                 << " - " << current->data.description
+                 << " (TutorID: " << current->data.tutorID
+                 << ", RequestID: " << current->data.requestID
+                 << ", Status: " << current->data.status << ")"
+                 << endl;
             current = current->next;
         }
     }
 };
-#endif // LINKEDLIST_H
