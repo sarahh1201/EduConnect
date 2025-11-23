@@ -13,7 +13,7 @@ using namespace std;
 
 // ----------------- User Struct -----------------
 struct User {
-    string firstName, lastName, username, password, securityQ, securityA;
+    string firstName, lastName, username, password, email, securityQ, securityA;
     int userType; // 1 = Tutor, 0 = Student
 };
 
@@ -47,6 +47,7 @@ vector<User> loadUsersCSV(const string& path) {
         getline(ss, u.lastName, ',');
         getline(ss, u.username, ',');
         getline(ss, u.password, ',');
+        getline(ss, u.email, ',');
         getline(ss, u.securityQ, ',');
         getline(ss, u.securityA, ',');
         getline(ss, temp, ','); u.userType = stoi(temp);
@@ -54,6 +55,31 @@ vector<User> loadUsersCSV(const string& path) {
     }
     return users;
 }
+
+void saveUsersCSV(const string& filePath, const vector<User>& users) {
+    ofstream file(filePath, ios::trunc); // Clear + rewrite
+
+    if (!file.is_open()) {
+        cerr << "ERROR: Could not open users CSV for writing!" << endl;
+        return;
+    }
+
+    // Optional: write header
+    file << "FirstName,LastName,Username,Password,email,SecurityQ,SecurityA,UserType\n";
+
+    for (const auto& u : users) {
+        file << u.username << ","
+             << u.firstName << ","
+             << u.lastName << ","
+             << u.password << ","
+             << u.email << ","
+             << u.securityQ << ","
+             << u.securityA << "\n";
+    }
+
+    file.close();
+}
+
 
 vector<Tutor> loadTutorsCSV(const string& path) {
     vector<Tutor> tutors;

@@ -17,12 +17,22 @@ User* verifyUser(vector<User>& users, const string& username, const string& pass
     return nullptr;
 }
 
+User* findUserByUsername(const string& username, vector<User>& users) {
+    for (auto& u : users) {
+        if (u.username == username) {
+            return &u;   // return pointer to the exact user
+        }
+    }
+    return nullptr; // not found
+}
+
 void PasswordRecovery(vector<User>& users, const string& user) // Asks the user a security question, and if they get it correct present the current password in the 'server'
 {
-	User* userPtr = nullptr;
-	for (auto& u : users){
-		userPtr = &u;
-		break;
+	User* userPtr = findUserByUsername(user, users);
+
+	if (!userPtr) {
+		cout << "User not found!" << endl;
+		return;
 	}
 	
 	clearScreen(); // Clear the display for this new 'window'
@@ -55,13 +65,15 @@ void PasswordRecovery(vector<User>& users, const string& user) // Asks the user 
 	return;		
 }
 
-void PasswordChanger(const vector<User>& users, const string& user) // Does exactly what's on the tin
+void PasswordChanger(vector<User>& users, const string& user) // Does exactly what's on the tin
 { 
-	User* userPtr = nullptr;
-	for (auto u : users){
-		userPtr = &u;
-		break;
+	User* userPtr = findUserByUsername(user, users);
+
+	if (!userPtr) {
+		cout << "User not found!" << endl;
+		return;
 	}
+
 	// NOTE: This function is currently unused, be sure to have an option for the user to change their password when logged in!
 	clearScreen(); // Clear way for this cool new window!
 	cout << "--------------------------------" << endl;
@@ -97,6 +109,7 @@ void PasswordChanger(const vector<User>& users, const string& user) // Does exac
 			if (newPassword == confirmPassword) // If both new passwords match, change it!
 			{
 				userPtr->password = newPassword; // Change the password in the 'server'
+				saveUsersCSV("/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/user.csv", users);
 				cout << "Password successfully changed!" << endl;
 				return;
 			}
@@ -122,9 +135,14 @@ void PasswordChanger(const vector<User>& users, const string& user) // Does exac
 }
 
 // ----------------- Login Screen -----------------
-void loginScreen(vector<User>& users) {
+void password(vector<User>& users) {
     const int maxAttempts = 3;
     int attempts = 0;
+
+	clearScreen(); // Ol' Reliable
+	cout << "--------------------------------" << endl;
+	cout << "   Educonnect Secure Screen:" << endl;
+	cout << "--------------------------------" << endl;
 
     while (attempts < maxAttempts) {
         string userID, password;
@@ -132,16 +150,6 @@ void loginScreen(vector<User>& users) {
         cin >> userID;
         cout << "Enter Password: ";
         cin >> password;
-
-        // Recovery
-        if (password =="recover"){
-            PasswordRecovery(users,userID);
-        }
-		// Change Password
-		if (password =="change"){
-            PasswordChanger(users,userID);
-        }
-		else {continue;}
 
         User* user = verifyUser(users, userID, password);
         if (user) {
@@ -156,7 +164,18 @@ void loginScreen(vector<User>& users) {
 
             return; // Exit after successful login
         } else {
-            cout << "Invalid User ID or Password." << endl;
+			    // Recovery
+				if (password =="recover"){
+					PasswordRecovery(users,userID);
+				}
+				// Change Password
+				if (password =="change"){
+					PasswordChanger(users,userID);
+				}
+				else{
+					cout << "Invalid User ID or Password. You have " << (maxAttempts - attempts - 1) << " attempts remaining." << endl;
+				}
+            
             attempts++;
         }
     }

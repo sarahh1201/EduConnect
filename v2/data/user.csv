@@ -1,7 +1,7 @@
-FirstName,LastName,Username,Password,SecurityQ,SecurityA,UserType
-James,Cameron,JCameron,pass123,Where did you grow up?,Canada,1
-Howard,Ross,HRoss,word456,Name your favourite TV show,Friends,0
-Philip,Kindred,PKindred,123joy,What is your mother's maiden name?,Joyce,1
-Linda,Smith,LSmith,myPass,What was your first pet's name?,Buddy,0
-Michael,Johnson,MJohnson,secure789,What is your favorite book?,1984,1
-Emily,Davis,EDavis,hello321,What city were you born in?,New York,0
+FirstName,LastName,Username,Password,email,SecurityQ,SecurityA,UserType
+JCameron,James,Cameron,VeryS3cure,james.cameron@example.com,Where did you grow up?,Canada,1
+HRoss,Howard,Ross,1Dunno,howard.ross@example.com,Name your favourite TV show,Friends,0
+PKindred,Philip,Kindred,J0eMama,philip.kindred@example.com,What is your mother's maiden name?,Joyce,1
+LSmith,Linda,Smith,myPass,linda.smith@example.com,What was your first pet's name?,Buddy,0
+MJohnson,Michael,Johnson,secure789,michael.johnson@example.com,What is your favorite book?,1984,1
+EDavis,Emily,Davis,hello321,emily.davis@example.com,What city were you born in?,New York,0
