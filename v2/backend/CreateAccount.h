@@ -61,7 +61,7 @@ void makeAccount() {
     cout << "Enter your email: ";
     cin >> newUser.email;
 
-    string questionChoice[] = {
+    string questionChoice[4] = {
         "Where did you grow up?",
         "Name your favourite TV show",
         "What is your mother's maiden name?",
@@ -69,11 +69,19 @@ void makeAccount() {
     };
 
     cout << "Select a security question:" << endl;
-    for (size_t i = 0; i < sizeof(questionChoice)/sizeof(questionChoice[0]); i++) {
-        cout << i + 1 << ") " << questionChoice[i] << endl;
+    int i = 1;
+    for (const auto& q : questionChoice) {
+        cout << i++ << ") " << q << endl;
     }
+    cout << "Enter choice (1-4): ";
     int qChoice;
     cin >> qChoice;
+
+    if (qChoice > 4 || qChoice < 1)
+    {
+        cout << "Invalid choice. Defaulting to question 1." << endl;
+        qChoice = 1;
+    }
 
     cin.ignore(); // clear newline character from buffer
     newUser.securityQ = questionChoice[qChoice - 1];
@@ -82,7 +90,7 @@ void makeAccount() {
     getline(cin, newUser.securityA);
     cout << "Student or Tutor? (0 = Student, 1 = Tutor): ";
     cin >> newUser.userType;
-    
+
     if (newUser.userType == 1) {addTutorAccount(&newUser);}    
 
     // Append new request to CSV

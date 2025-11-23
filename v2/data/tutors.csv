@@ -6,3 +6,4 @@ tutorID,name,subjects,email,rating,available
 105,Linda,Computer Science;Economics,linda@example.com,4.6,false
 106,Howard,Math;Computer Science,howard@example.com,4.3,true
 107,Sam Jones,Math;Science,sjones@example.com,0.0,true
+108,Sam,French;English,sam@example.com,0.7,true
