@@ -40,9 +40,9 @@ int main() {
     //ViewRequests(); // View requests as a tutor
     //AcceptRequest(); // Accept a request as a tutor
 
-    password(users); // User login and dashboard access
+    //password(users); // User login and dashboard access
 
-    /*
+    
     cout << "Welcome to EduConnect!" << endl;
     cout << "Would you like to (1) Login or (2) Create an Account? ";
     int choice;
@@ -55,6 +55,6 @@ int main() {
     } else {
         cout << "Invalid choice. Exiting." << endl;
     }
-    */
+    
     return 0;
 }

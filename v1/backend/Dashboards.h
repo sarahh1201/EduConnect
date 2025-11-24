@@ -61,7 +61,7 @@ void TutorDashboard(string tutorUsername)
         viewActiveSessions(tutorUsername);
         break;
     case 4:
-        EndSession();
+        EndSession(tutorUsername);
         break;
     case 5:
         cout << "Logging out..." << endl;
@@ -80,7 +80,8 @@ void StudentDashboard(string studentUsername)
     cout << "2. Search for Tutors" << endl;
     cout << "3. Active Sessions" << endl;
     cout << "4. Give Rating" << endl;
-    cout << "5. Logout" << endl;
+    cout << "5. End Session" << endl;
+    cout << "6. Logout" << endl;
     cout << "Please select an option: ";
 
     int choice;
@@ -101,6 +102,8 @@ void StudentDashboard(string studentUsername)
         GiveRating(studentUsername);
         break;
     case 5:
+        EndSession(studentUsername);
+    case 6:
         cout << "Logging out..." << endl;
         return;
     default:
