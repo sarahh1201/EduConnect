@@ -6,6 +6,8 @@
 #include "ClearScreen.h"
 #include "MakeRequest.h"
 #include "TutorSearch.h"
+#include "EndSession.h"
+#include "GiveRating.h"
 
 #include "AcceptRequest.h"
 
@@ -38,7 +40,9 @@ void TutorDashboard(string tutorUsername)
 
     cout << "1. View Requests" << endl;
     cout << "2. Accept Request" << endl;
-    cout << "3. Logout" << endl;
+    cout << "3. View Active Sessions" << endl;
+    cout << "4. End Session" << endl;
+    cout << "5. Logout" << endl;
     cout << "Please select an option: ";
 
     
@@ -54,6 +58,12 @@ void TutorDashboard(string tutorUsername)
         AcceptRequest(tutorUsername);
         break;
     case 3:
+        viewActiveSessions(tutorUsername);
+        break;
+    case 4:
+        EndSession();
+        break;
+    case 5:
         cout << "Logging out..." << endl;
         return;
     default:
@@ -68,7 +78,9 @@ void StudentDashboard(string studentUsername)
 
     cout << "1. Make a Request" << endl;
     cout << "2. Search for Tutors" << endl;
-    cout << "3. Logout" << endl;
+    cout << "3. Active Sessions" << endl;
+    cout << "4. Give Rating" << endl;
+    cout << "5. Logout" << endl;
     cout << "Please select an option: ";
 
     int choice;
@@ -83,6 +95,12 @@ void StudentDashboard(string studentUsername)
         TutorSearchMenu();
         break;
     case 3:
+        viewActiveSessions(studentUsername);
+        break;
+    case 4:
+        GiveRating(studentUsername);
+        break;
+    case 5:
         cout << "Logging out..." << endl;
         return;
     default:

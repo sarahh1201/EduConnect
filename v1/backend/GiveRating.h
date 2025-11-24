@@ -1,5 +1,4 @@
-#ifndef CREDIT_ALGORITHM_H
-#define CREDIT_ALGORITHM_H
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -7,64 +6,103 @@
 #include "Decode.h"
 using namespace std;
 
-void CreditAlgorithm(unordered_map<int, vector<int>>& tutorRatings) {
-    cout << "Would you like to rate your tutor? (y/n): ";
-    char response;
-    cin >> response;
-    if (response == 'y' || response == 'Y') {
-        int tutorID;
-        cout << "Enter Tutor ID: ";
-        cin >> tutorID;
+#pragma once
 
-        if (tutorRatings.find(tutorID) == tutorRatings.end()) {
-            cout << "Tutor ID not found.\n";
-            return;
-        }
+#include <iostream>
+#include <vector>
+#include <string>
+#include "Decode.h"
+using namespace std;
 
-        int rating;
-        cout << "Enter rating for Tutor " << tutorID << " (1-5): ";
-        cin >> rating;
-        if (rating < 1 || rating > 5) {
-            cout << "Invalid rating. Please enter a number between 1 and 5.\n";
-            return;
+void viewPendingRatings(const string& studentUsername) {
+    SessionHistory history = loadSessionsCSV();
+    SessionNode* current = history.head;
+    bool found = false;
+
+    cout << "Sessions pending ratings for: " << studentUsername << endl;
+    cout << "----------------------------------------" << endl;
+
+    while (current) {
+        if (current->data.studentUsername == studentUsername &&
+            current->data.status == "ending") {
+            cout << "Session ID: " << current->data.sessionID
+                 << ", Tutor: " << current->data.tutorUsername
+                 << ", Subject: " << current->data.subject
+                 << ", Description: " << current->data.description << endl;
+            found = true;
         }
-        tutorRatings[tutorID].push_back(rating);
+        current = current->next;
     }
-    cout << "Thank you for your feedback!\n";
+
+    if (!found) {
+        cout << "No sessions pending ratings." << endl;
+    }
 }
 
-void displayTutorRatings(const unordered_map<int, vector<int>>& tutorRatings) {
-    cout << "\n--- Tutor Ratings Summary ---\n";
-    for (const auto& entry : tutorRatings) {
-        int tutorID = entry.first;
-        const vector<int>& ratings = entry.second;
-        if (ratings.empty()) {
-            cout << "Tutor " << tutorID << " has no ratings yet.\n";
-            continue;
-        }
-        double average = 0.0;
-        for (int rate : ratings) {
-            average += rate;
-        }
-        average /= ratings.size();
-        cout << "Tutor " << tutorID << " - Average Rating: " << average << " (" << ratings.size() << " ratings)\n";
-    }
-    cout << "-----------------------------\n";
-}
+void GiveRating(const string& studentUsername) {
+    // Load session history once
+    SessionHistory history = loadSessionsCSV();
 
-void tutorAverage(int tutorID, const unordered_map<int, vector<int>>& tutorRatings) {
-    auto it = tutorRatings.find(tutorID);
-    if (it == tutorRatings.end() || it->second.empty()) {
-        cout << "Tutor " << tutorID << " has no ratings yet.\n";
+    // Display pending sessions
+    SessionNode* current = history.head;
+    bool found = false;
+    cout << "Sessions pending ratings for: " << studentUsername << endl;
+    cout << "----------------------------------------" << endl;
+    while (current) {
+        if (current->data.studentUsername == studentUsername &&
+            current->data.status == "ending") {
+            cout << "Session ID: " << current->data.sessionID
+                 << ", Tutor: " << current->data.tutorUsername
+                 << ", Subject: " << current->data.subject
+                 << ", Description: " << current->data.description << endl;
+            found = true;
+        }
+        current = current->next;
+    }
+    if (!found) {
+        cout << "No sessions pending ratings." << endl;
         return;
     }
-    const vector<int>& ratings = it->second;
-    double average = 0.0;
-    for (int rate : ratings) {
-        average += rate;
-    }
-    average /= ratings.size();
-    cout << "Tutor " << tutorID << " - Average Rating: " << average << " (" << ratings.size() << " ratings)\n";
-}
 
-#endif // CREDIT_ALGORITHM_H
+    // Ask for tutor username
+    cout << "Enter the tutor's username you want to rate: ";
+    string tutorUsername;
+    cin >> tutorUsername;
+    cin.ignore();
+
+    int ratingValue;
+    string comments;
+    cout << "Enter rating for tutor (1-5): ";
+    cin >> ratingValue;
+    cin.ignore();
+    cout << "Enter comments: ";
+    getline(cin, comments);
+
+    // Append rating to CSV
+    vector<Rating> ratings = loadRatingsCSV();
+    int nextRatingID = ratings.empty() ? 1 : ratings.back().ratingID + 1;
+    ofstream file(ratingsDataPath, ios::app);
+    if (!file.is_open()) {
+        cerr << "Cannot open ratings CSV!" << endl;
+        return;
+    }
+    file << nextRatingID << "," << tutorUsername << "," << studentUsername
+         << "," << ratingValue << "," << comments << "\n";
+    file.close();
+    cout << "Rating submitted successfully." << endl;
+
+    // Update session status
+    current = history.head;
+    while (current) {
+        if (current->data.studentUsername == studentUsername &&
+            current->data.tutorUsername == tutorUsername &&
+            current->data.status == "ending") {
+            current->data.status = "reviewed";
+            break; // update only the intended session
+        }
+        current = current->next;
+    }
+
+    saveSessionsCSV(history);
+    cout << "Session status updated to 'reviewed'." << endl;
+}

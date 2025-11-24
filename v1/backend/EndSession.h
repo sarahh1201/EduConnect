@@ -50,17 +50,21 @@ void EndSession() {
     
 }
 
-void viewActiveSessions(const string& tutorUsername) {
+void viewActiveSessions(const string& username) {
     SessionHistory history = loadSessionsCSV();
     SessionNode* current = history.head;
     bool found = false;
 
-    cout << "Active Sessions for Tutor: " << tutorUsername << endl;
+    cout << "Active Sessions for: " << username << endl;
     cout << "----------------------------------------" << endl;
 
     while (current) {
-        if (current->data.tutorUsername == tutorUsername && current->data.status == "accepted") {
+        if ((current->data.tutorUsername == username || current->data.studentUsername == username) && current->data.status == "accepted") {
             cout << "Session ID: " << current->data.sessionID << endl;
+            cout << "----------------------------------------" << endl;
+            cout << "Tutor Username: " << current->data.tutorUsername << endl;
+            cout << "Student Username: " << current->data.studentUsername << endl;
+            cout << "----------------------------------------" << endl;
             cout << "Subject: " << current->data.subject << endl;
             cout << "Description: " << current->data.description << endl;
             cout << "Student Username: " << current->data.studentUsername << endl;
@@ -74,5 +78,36 @@ void viewActiveSessions(const string& tutorUsername) {
 
     if (!found) {
         cout << "No active sessions found." << endl;
+    }
+}
+
+void viewEndedSessions(const string& username) {
+    SessionHistory history = loadSessionsCSV();
+    SessionNode* current = history.head;
+    bool found = false;
+
+    cout << "Ended Sessions for: " << username << endl;
+    cout << "----------------------------------------" << endl;
+
+    while (current) {
+        if ((current->data.tutorUsername == username || current->data.studentUsername == username) && current->data.status == "ended") {
+            cout << "Session ID: " << current->data.sessionID << endl;
+            cout << "----------------------------------------" << endl;
+            cout << "Tutor Username: " << current->data.tutorUsername << endl;
+            cout << "Student Username: " << current->data.studentUsername << endl;
+            cout << "----------------------------------------" << endl;
+            cout << "Subject: " << current->data.subject << endl;
+            cout << "Description: " << current->data.description << endl;
+            cout << "Student Username: " << current->data.studentUsername << endl;
+            cout << "Request ID: " << current->data.requestID << endl;
+            cout << "Status: " << current->data.status << endl;
+            cout << "----------------------------------------" << endl;
+            found = true;
+        }
+        current = current->next;
+    }
+
+    if (!found) {
+        cout << "No ended sessions found." << endl;
     }
 }
