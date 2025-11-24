@@ -9,7 +9,8 @@ struct Session
     int sessionID;
     string subject;
     string description;
-    int tutorID;
+    string tutorUsername;
+    string studentUsername;
     int requestID;
     string status;
 };
@@ -36,7 +37,8 @@ struct SessionHistory {
             cout << "Session " << current->data.sessionID 
                  << ": " << current->data.subject
                  << " - " << current->data.description
-                 << " (TutorID: " << current->data.tutorID
+                 << " (TutorUsername: " << current->data.tutorUsername
+                 << ", StudentUsername: " << current->data.studentUsername
                  << ", RequestID: " << current->data.requestID
                  << ", Status: " << current->data.status << ")"
                  << endl;

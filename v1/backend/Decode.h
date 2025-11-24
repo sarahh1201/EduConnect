@@ -11,13 +11,12 @@
 #include "RequestHeap.h"
 using namespace std;
 
-string userDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/user.csv";
-string tutorsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/tutors.csv";
-string requestsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/requests.csv";
-string sessionsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/sessions.csv";
-string subjectsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/subjects.csv";
-string ratingsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v2/data/ratings.csv";
-
+string userDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/user.csv";
+string tutorsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/tutors.csv";
+string requestsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/requests.csv";
+string sessionsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/sessions.csv";
+string subjectsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/subjects.csv";
+string ratingsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/ratings.csv";
 // ----------------- User Struct -----------------
 struct User
 {
@@ -45,6 +44,15 @@ struct Request
     string subject;
     int urgency;
     string description;
+};
+
+struct Rating
+{
+    int ratingID;
+    string tutorUsername;
+    string studentUsername;
+    int ratingValue;
+    string comments;
 };
 
 // ----------------- CSV User Loaders -----------------
@@ -309,18 +317,17 @@ SessionHistory loadSessionsCSV()
         }
         stringstream ss(line);
         int id;
-        string subject, description, status;
+        string subject, description, tutorUsername, studentUsername, status;
         string temp;
         getline(ss, temp, ',');
         id = stoi(temp);
         getline(ss, subject, ',');
         getline(ss, description, ',');
-        getline(ss, temp, ',');
-        int tutorID = stoi(temp);
-        getline(ss, temp, ',');
-        int requestID = stoi(temp);
+        getline(ss, tutorUsername, ',');
+        getline(ss, studentUsername, ',');
+        getline(ss, temp, ','); int requestID = stoi(temp);
         getline(ss, status, ',');
-        Session s{id, subject, description, tutorID, requestID, status};
+        Session s{id, subject, description, tutorUsername, studentUsername, requestID, status};
         history.addSession(s);
     }
     return history;
@@ -334,7 +341,7 @@ void saveSessionsCSV(const SessionHistory &history)
         cerr << "Cannot open sessions CSV for writing!\n";
         return;
     }
-    file << "sessionID,subject,description,tutorID,requestID,status\n";
+    file << "sessionID,subject,description,tutorUsername,studentUsername,requestID,status\n";
 
     SessionNode *current = history.head;
     while (current)
@@ -342,7 +349,8 @@ void saveSessionsCSV(const SessionHistory &history)
         file << current->data.sessionID << ","
              << current->data.subject << ","
              << current->data.description << ","
-             << current->data.tutorID << ","
+             << current->data.tutorUsername << ","
+             << current->data.studentUsername << ","
              << current->data.requestID << ","
              << current->data.status << "\n";
         current = current->next;
@@ -383,4 +391,90 @@ void SubjectsList()
     {
         cout << "- " << subject << endl;
     }
+}
+
+// ----------------- CSV Ratings Loaders -----------------
+vector<Rating> loadRatingsCSV()
+{
+    vector<Rating> ratings;
+    ifstream file(ratingsDataPath);
+    if (!file.is_open())
+    {
+        cerr << "Cannot open " << ratingsDataPath << endl;
+        return ratings;
+    }
+
+    string line;
+    bool firstLine = true;
+    while (getline(file, line))
+    {
+        if (firstLine)
+        {
+            firstLine = false;
+            continue;
+        }
+        stringstream ss(line);
+        Rating r;
+        string temp;
+        getline(ss, temp, ',');
+        r.ratingID = stoi(temp);
+        getline(ss, r.tutorUsername, ',');
+        getline(ss, r.studentUsername, ',');
+        getline(ss, temp, ',');
+        r.ratingValue = stoi(temp);
+        ratings.push_back(r);
+    }
+    return ratings;
+}
+
+void loadRatingsCSV(vector<Rating> &ratings){
+    ifstream file(ratingsDataPath);
+    if (!file.is_open())
+    {
+        cerr << "Cannot open " << ratingsDataPath << endl;
+        return;
+    }
+
+    string line;
+    bool firstLine = true;
+    while (getline(file, line))
+    {
+        if (firstLine)
+        {
+            firstLine = false;
+            continue;
+        }
+        stringstream ss(line);
+        Rating r;
+        string temp;
+        getline(ss, temp, ',');
+        r.ratingID = stoi(temp);
+        getline(ss, r.tutorUsername, ',');
+        getline(ss, r.studentUsername, ',');
+        getline(ss, temp, ',');
+        r.ratingValue = stoi(temp);
+        ratings.push_back(r);
+    }
+}
+void saveRatingsCSV(const vector<Rating> &ratings)
+{
+    ofstream file(ratingsDataPath, ios::trunc); // Clear + rewrite
+
+    if (!file.is_open())
+    {
+        cerr << "ERROR: Could not open ratings CSV for writing!" << endl;
+        return;
+    }
+
+    file << "ratingID,tutorUsername,studentUsername,ratingValue\n";
+
+    for (const auto &r : ratings)
+    {
+        file << r.ratingID << ","
+             << r.tutorUsername << ","
+             << r.studentUsername << ","
+             << r.ratingValue << "\n";
+    }
+
+    file.close();
 }

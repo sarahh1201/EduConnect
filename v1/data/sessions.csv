@@ -1,3 +1,4 @@
-sessionID,subject,description,tutorID,requestID,status
-3,English,Looking for essay writing tips,0,3,accepted
-1,Math,Needs help with calculus,0,1,accepted
+sessionID,subject,description,tutorUsername,studentUsername,requestID,status
+1,Science,I don't understand anything,PKindred,HRoss,5,accepted
+2,Math,Needs help with calculus,PKindred,LSmith,1,accepted
+3,English,Looking for essay writing tips,JBob,LSmith,3,accepted

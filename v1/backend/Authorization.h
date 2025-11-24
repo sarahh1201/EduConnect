@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -84,7 +86,7 @@ void PasswordChanger(vector<User>& users, const string& user) // Does exactly wh
 	cout << "--------------------------------" << endl;
 	cout << "User ID: "; // First, ask the user to re-input their ID once more for verification
 	string ID;
-	cin >> ID; // Quite aptly
+	getline(cin, ID); // Quite aptly
 	cin.clear(); // This is to prevent any other input just randomly being applied to the next time 'cin' is called
 
 	if (ID != userPtr->username) // If the ID doesn't match up, boot them outta here
@@ -97,7 +99,7 @@ void PasswordChanger(vector<User>& users, const string& user) // Does exactly wh
 	string oldPassword; // Let this represent the old password the user will be inputting
 	
 	cout << "Enter your current password: ";
-	cin >> oldPassword;
+	getline(cin, oldPassword);
 
 	while (screwUps < 3) // Max of 3 attempts to get this right
 	{
@@ -150,9 +152,11 @@ void password(vector<User>& users) {
     while (attempts < maxAttempts) {
         string userID, password;
         cout << "Enter User ID: ";
-        getline(cin, userID); 
+		cin >> userID;
+		cin.ignore(); // Clear newline character from buffer
         cout << "Enter Password (Type 'recover' to recover password, 'change' to change password): ";
-        getline(cin, password); 
+		cin >> password;
+		cin.ignore(); // Clear newline character from buffer
 
         User* user = verifyUser(users, userID, password);
         if (user) {

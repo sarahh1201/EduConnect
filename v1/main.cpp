@@ -9,6 +9,7 @@
 #include "backend/TutorSearch.h"
 #include "backend/SessionHistory.h"
 #include "backend/AcceptRequest.h"
+#include "backend/GiveRating.h"
 
 
 int main() {
@@ -39,10 +40,14 @@ int main() {
     //ViewRequests(); // View requests as a tutor
     //AcceptRequest(); // Accept a request as a tutor
 
+    password(users); // User login and dashboard access
+
+    /*
     cout << "Welcome to EduConnect!" << endl;
     cout << "Would you like to (1) Login or (2) Create an Account? ";
     int choice;
     cin >> choice;
+    cin.ignore(); 
     if (choice == 1) {
         password(users);
     } else if (choice == 2) {
@@ -50,6 +55,6 @@ int main() {
     } else {
         cout << "Invalid choice. Exiting." << endl;
     }
-    
+    */
     return 0;
 }

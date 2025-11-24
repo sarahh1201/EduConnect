@@ -16,7 +16,7 @@ bool tutorTeaches(const Tutor &t, const string &subject)
     return false;
 }
 
-void UpdateRequestStatus(int reqID)
+void UpdateRequestStatus(int reqID, const string &tutorUsername)
 {
     vector<Request> requests = loadRequestsCSV();
 
@@ -36,11 +36,22 @@ void UpdateRequestStatus(int reqID)
 
     // Load existing sessions, add new session
     SessionHistory history = loadSessionsCSV();
+
+    int nextSessionID = 1; // default if no sessions exist
+    SessionNode* current = history.head;
+    while (current) {
+        if (current->data.sessionID >= nextSessionID)
+            nextSessionID = current->data.sessionID + 1;
+        current = current->next;
+    }
+
+
     Session newSession{
-        acceptedRequest.requestID,   // sessionID
+        nextSessionID,   // sessionID
         acceptedRequest.subject,     // subject
         acceptedRequest.description, // description
-        0,                           // tutorID (can assign later)
+        tutorUsername,                          
+        acceptedRequest.studentUsername,                       
         acceptedRequest.requestID,   // requestID
         "accepted"                   // status
     };
@@ -94,7 +105,7 @@ void AcceptRequest(string tutorUsername)
 
             // Accept request
             cout << "Request " << reqID << " accepted successfully.\n";
-            UpdateRequestStatus(reqID);  // remove request + add session history
+            UpdateRequestStatus(reqID, tutorUsername);  // remove request + add session history
             return;
         }
     }

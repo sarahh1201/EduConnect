@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include "Decode.h"
 using namespace std;
 
 void CreditAlgorithm(unordered_map<int, vector<int>>& tutorRatings) {

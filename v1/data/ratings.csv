@@ -1,4 +1,4 @@
-tutorUsername,totalRatings,totalScore,averageRating
-JCameron,5,22,4.4
-HRoss,2,9,4.5
-PKindred,3,12,4.0
+ratingID,tutorUsername, studentUsername, ratingValue, comments
+1,SJones,LSmith,5,Excellent tutor
+2,JCameron,EDavis,4,Very helpful
+3,BRoss,HRoss,5,Great explanations
