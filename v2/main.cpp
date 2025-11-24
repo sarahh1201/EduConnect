@@ -7,6 +7,8 @@
 #include "backend/MakeRequest.h"
 #include "backend/CreateAccount.h"
 #include "backend/TutorSearch.h"
+#include "backend/SessionHistory.h"
+#include "backend/AcceptRequest.h"
 
 
 int main() {
@@ -23,14 +25,31 @@ int main() {
     cout << "Loaded " << subjects.size() << " subjects.\n";
     cout << "Loaded session history:\n";
     sessions.display();
+
+    clearScreen_verify(); // Clear screen before starting
     
-    password(users);
+    //SubjectsList(); // Display list of subjects 
 
-    //SubjectsList();
+    //processRequests(requests, tutors); // Process and match requests to tutors
+    //makeRequest(); // Make a request as a student
+    //makeAccount(); // Create a new user account (tutor or student)
+    //TutorSearchMenu(); // Search for tutors by ID or subject
+    //sessions.display(); // Display session history
 
-    //processRequests(requests, tutors);
-    //makeRequest();
-    //makeAccount();
-    //TutorSearchMenu();
+    //ViewRequests(); // View requests as a tutor
+    //AcceptRequest(); // Accept a request as a tutor
+
+    cout << "Welcome to EduConnect!" << endl;
+    cout << "Would you like to (1) Login or (2) Create an Account? ";
+    int choice;
+    cin >> choice;
+    if (choice == 1) {
+        password(users);
+    } else if (choice == 2) {
+        makeAccount();
+    } else {
+        cout << "Invalid choice. Exiting." << endl;
+    }
+    
     return 0;
 }

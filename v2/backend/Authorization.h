@@ -5,6 +5,7 @@
 #include <string>
 #include "Decode.h"
 #include "ClearScreen.h"
+#include "Dashboards.h"
 
 using namespace std;
 
@@ -159,11 +160,14 @@ void password(vector<User>& users) {
                  << user->firstName << " " 
                  << user->lastName << "." << endl;
 
-            if (user->userType == 1)
+            if (user->userType == 1) {
                 cout << "User Type: Tutor" << endl;
-            else
+				TutorDashboard(user->username);
+			}
+            else {
                 cout << "User Type: Student" << endl;
-
+				StudentDashboard(user->username);
+			}
             return; // Exit after successful login
         } else {
 			    // Recovery

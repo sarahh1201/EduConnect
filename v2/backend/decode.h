@@ -30,6 +30,7 @@ struct Tutor
 {
     int tutorID;
     string name;
+    string username;
     vector<string> subjects;
     string email;
     double rating;
@@ -44,17 +45,6 @@ struct Request
     string subject;
     int urgency;
     string description;
-};
-
-// ----------------- Session Struct -----------------
-struct Session
-{
-    int sessionID;
-    string subject;
-    string description;
-    int tutorID;
-    int requestID;
-    string status;
 };
 
 // ----------------- CSV User Loaders -----------------
@@ -148,6 +138,7 @@ vector<Tutor> loadTutorsCSV()
         getline(ss, temp, ',');
         t.tutorID = stoi(temp);
         getline(ss, t.name, ',');
+        getline(ss, t.username, ',');
         getline(ss, subjects, ',');
         getline(ss, t.email, ',');
         getline(ss, temp, ',');

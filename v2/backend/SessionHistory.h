@@ -4,7 +4,8 @@
 #include <string>
 using namespace std;
 
-struct Session{
+struct Session
+{
     int sessionID;
     string subject;
     string description;

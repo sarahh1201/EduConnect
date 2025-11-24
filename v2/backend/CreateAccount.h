@@ -38,6 +38,7 @@ void addTutorAccount(User* user) {
 
     file << newTutor.tutorID << ","
          << (user->firstName + " " + user->lastName) << ","
+         << user->username << ","
          << subjectsCSV << ","
          << user->email << ","
          << "0.0" << ","  // initial rating

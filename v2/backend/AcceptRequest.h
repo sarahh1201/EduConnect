@@ -1,7 +1,20 @@
+#pragma once
+
 #include "Decode.h"
 #include "SessionHistory.h"
 #include <iostream>
 using namespace std;
+
+// Helper function to check if tutor teaches a subject
+bool tutorTeaches(const Tutor &t, const string &subject)
+{
+    for (const string &s : t.subjects)
+    {
+        if (s == subject)
+            return true;
+    }
+    return false;
+}
 
 void UpdateRequestStatus(int reqID)
 {
@@ -39,39 +52,98 @@ void UpdateRequestStatus(int reqID)
     cout << "Request " << reqID << " accepted and session created.\n";
 }
 
-void AcceptRequest()
+void AcceptRequest(string tutorUsername)
 {
-    Request *req;
-    cout << "Enter Request ID to accept: ";
+    vector<Request> requests = loadRequestsCSV();
+    vector<Tutor> tutors = loadTutorsCSV();
+
+    // Find this tutor
+    Tutor currentTutor;
+    bool foundTutor = false;
+
+    for (const auto &t : tutors)
+    {
+        if (t.username == tutorUsername)
+        {
+            currentTutor = t;
+            foundTutor = true;
+            break;
+        }
+    }
+
+    if (!foundTutor)
+    {
+        cout << "Error: Tutor not found.\n";
+        return;
+    }
+
+    cout << "\nEnter Request ID to accept: ";
     int reqID;
     cin >> reqID;
 
-    vector<Request> requests = loadRequestsCSV();
     for (const auto &r : requests)
     {
         if (r.requestID == reqID)
         {
-            req = new Request(r);
-            cout << "Request ID " << reqID << " accepted." << endl;
-            UpdateRequestStatus(reqID);
+            // Ensure tutor teaches the requested subject
+            if (!tutorTeaches(currentTutor, r.subject))
+            {
+                cout << "You cannot accept this request — you do NOT teach this subject.\n";
+                return;
+            }
 
-            // Further processing can be done here
+            // Accept request
+            cout << "Request " << reqID << " accepted successfully.\n";
+            UpdateRequestStatus(reqID);  // remove request + add session history
             return;
         }
     }
-    cout << "Request ID " << reqID << " not found." << endl;
+
+    cout << "Request ID not found.\n";
 }
 
-void ViewRequests()
+void ViewRequests(string tutorUsername)
 {
     vector<Request> requests = loadRequestsCSV();
-    cout << "Current Requests:\n";
+    vector<Tutor> tutors = loadTutorsCSV();
+
+    // Find tutor by username
+    Tutor currentTutor;
+    bool found = false;
+
+    for (const auto &t : tutors)
+    {
+        if (t.username == tutorUsername)
+        {
+            currentTutor = t;
+            found = true;
+            break;
+        }
+    }
+
+    if (!found)
+    {
+        cout << "Error: Tutor not found.\n";
+        return;
+    }
+
+    cout << "\nRequests you are allowed to accept:\n";
+
+    bool printed = false;
     for (const auto &req : requests)
     {
-        cout << "Request ID: " << req.requestID
-             << " | Student: " << req.studentUsername
-             << " | Subject: " << req.subject
-             << " | Urgency: " << req.urgency
-             << " | Description: " << req.description << endl;
+        if (tutorTeaches(currentTutor, req.subject))
+        {
+            printed = true;
+
+            cout << "Request ID: " << req.requestID
+                 << " | Student: " << req.studentUsername
+                 << " | Subject: " << req.subject
+                 << " | Urgency: " << req.urgency
+                 << " | Description: " << req.description << endl;
+        }
     }
+
+    if (!printed)
+        cout << "(No requests available for your subjects.)\n";
 }

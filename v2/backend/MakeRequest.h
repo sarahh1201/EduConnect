@@ -1,13 +1,14 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
 #include "Decode.h"
+
 using namespace std;
 
-void makeRequest() {
+void makeRequest(string studentUsername) {
     Request newRequest;
-    cout << "Enter your username: ";
-    cin >> newRequest.studentUsername;
+    newRequest.studentUsername = studentUsername;
     cout << "Enter subject: ";
     cin >> newRequest.subject;
     cout << "Enter urgency (1-5): ";
