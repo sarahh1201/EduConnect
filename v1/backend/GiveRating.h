@@ -24,7 +24,7 @@ void viewPendingRatings(const string& studentUsername) {
 
     while (current) {
         if (current->data.studentUsername == studentUsername &&
-            current->data.status == "ending") {
+            current->data.status == "ended") {
             cout << "Session ID: " << current->data.sessionID
                  << ", Tutor: " << current->data.tutorUsername
                  << ", Subject: " << current->data.subject
@@ -45,25 +45,8 @@ void GiveRating(const string& studentUsername) {
 
     // Display pending sessions
     SessionNode* current = history.head;
-    bool found = false;
-    cout << "Sessions pending ratings for: " << studentUsername << endl;
-    cout << "----------------------------------------" << endl;
-    while (current) {
-        if (current->data.studentUsername == studentUsername &&
-            current->data.status == "ending") {
-            cout << "Session ID: " << current->data.sessionID
-                 << ", Tutor: " << current->data.tutorUsername
-                 << ", Subject: " << current->data.subject
-                 << ", Description: " << current->data.description << endl;
-            found = true;
-        }
-        current = current->next;
-    }
-    if (!found) {
-        cout << "No sessions pending ratings." << endl;
-        return;
-    }
-
+    viewEndedSessions(studentUsername);
+    
     // Ask for tutor username
     cout << "Enter the tutor's username you want to rate: ";
     string tutorUsername;
@@ -96,7 +79,7 @@ void GiveRating(const string& studentUsername) {
     while (current) {
         if (current->data.studentUsername == studentUsername &&
             current->data.tutorUsername == tutorUsername &&
-            current->data.status == "ending") {
+            current->data.status == "ended") {
             current->data.status = "reviewed";
             break; // update only the intended session
         }
