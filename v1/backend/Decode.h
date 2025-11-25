@@ -427,35 +427,6 @@ vector<Rating> loadRatingsCSV()
     return ratings;
 }
 
-void loadRatingsCSV(vector<Rating> &ratings){
-    ifstream file(ratingsDataPath);
-    if (!file.is_open())
-    {
-        cerr << "Cannot open " << ratingsDataPath << endl;
-        return;
-    }
-
-    string line;
-    bool firstLine = true;
-    while (getline(file, line))
-    {
-        if (firstLine)
-        {
-            firstLine = false;
-            continue;
-        }
-        stringstream ss(line);
-        Rating r;
-        string temp;
-        getline(ss, temp, ',');
-        r.ratingID = stoi(temp);
-        getline(ss, r.tutorUsername, ',');
-        getline(ss, r.studentUsername, ',');
-        getline(ss, temp, ',');
-        r.ratingValue = stoi(temp);
-        ratings.push_back(r);
-    }
-}
 void saveRatingsCSV(const vector<Rating> &ratings)
 {
     ofstream file(ratingsDataPath, ios::trunc); // Clear + rewrite
