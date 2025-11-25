@@ -1,7 +1,10 @@
 requestID,studentUsername,subject,urgency,description
 2,LSmith,Chemistry,3,Struggling with organic chemistry
-4,MJohnson,Physics,2,Understanding Newton's laws
+4,EDavis,Physics,2,Understanding Newton's laws
 6,SHill,Math,3,I need help with linear algebra 
 8,EDavis,Science,3,I have a test next week
 9,SHill,Math,4,Calc
 10,SHill,History,3,World War I
+11,EDavis,Art,3,Shading
+12,LSmith,Biology,4,I want to improve my grades.
+13,LSmith,Math,2,My final exam is in 2 weeks
