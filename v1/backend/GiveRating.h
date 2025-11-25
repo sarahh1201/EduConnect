@@ -14,6 +14,32 @@ using namespace std;
 #include "Decode.h"
 using namespace std;
 
+void updateTutorAverage(const std::string &tutorUsername) {
+    vector<Rating> ratings = loadRatingsCSV();
+    int total = 0;
+    int count = 0;  
+    for (const auto &r : ratings) {
+        if (r.tutorUsername == tutorUsername) {
+            total += r.ratingValue;
+            count++;
+        }
+    }
+
+    double avg = (count == 0) ? 0 : static_cast<double>(total) / count;
+
+    vector<Tutor> tutors = loadTutorsCSV();
+
+    for (auto &t : tutors) {
+        if (t.username == tutorUsername) {
+            t.rating = avg;
+            break;
+        }
+    }
+
+    saveTutorsCSV(tutors);
+}
+
+
 void viewPendingRatings(const string& studentUsername) {
     SessionHistory history = loadSessionsCSV();
     SessionNode* current = history.head;
@@ -53,6 +79,13 @@ void GiveRating(const string& studentUsername) {
     cin >> tutorUsername;
     cin.ignore();
 
+    if (current->data.tutorUsername != tutorUsername)
+    {
+       cout << "No ended session found with tutor " << tutorUsername << " for student " << studentUsername << "." << endl;
+       return;
+    }
+    
+
     int ratingValue;
     string comments;
     cout << "Enter rating for tutor (1-5): ";
@@ -74,6 +107,8 @@ void GiveRating(const string& studentUsername) {
     file.close();
     cout << "Rating submitted successfully." << endl;
 
+    updateTutorAverage(tutorUsername);
+
     // Update session status
     current = history.head;
     while (current) {
@@ -89,3 +124,4 @@ void GiveRating(const string& studentUsername) {
     saveSessionsCSV(history);
     cout << "Session status updated to 'reviewed'." << endl;
 }
+

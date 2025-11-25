@@ -1,8 +1,9 @@
 tutorID,name,username,subjects,email,rating,available
-101,James Cameron,JCameron,Math;English,james@example.com,4.5,true
-102,Philip Kindred,PKindred,Science;Math,philip.kindred@example.com,4.0,true
-103,Michael Johnson,MJohnson,English;History,michael.johnson@example.com,4.2,false
-104,Bob Ross,BRoss,Art;Painting,bobross@example.com,4.9,true
-105,Sam Jones,SJones,Math;Science,sjones@example.com,0.0,true
-106,Jones Bob,JBob,English;History,jones.bob@exmaple.com,0.0,true
-107,Kent Bruce,KBruce,Chemistry;Biology;Math,kbruce@example.com,0.0,true
+101,James Cameron,JCameron,Math;English,james@example.com,4,true
+102,Philip Kindred,PKindred,Science;Math,philip.kindred@example.com,0,true
+103,Michael Johnson,MJohnson,English;History,michael.johnson@example.com,0,false
+104,Bob Ross,BRoss,Art;Painting,bobross@example.com,5,true
+105,Sam Jones,SJones,Math;Science,sjones@example.com,5,true
+106,Jones Bob,JBob,English;History,jones.bob@exmaple.com,0,true
+107,Kent Bruce,KBruce,Chemistry;Biology;Math,kbruce@example.com,0,true
+108,t t,tutor123,Math;Science,new@exmaple.com,3.33333,false

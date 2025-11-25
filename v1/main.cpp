@@ -10,6 +10,7 @@
 #include "backend/SessionHistory.h"
 #include "backend/AcceptRequest.h"
 #include "backend/GiveRating.h"
+#include "backend/EditProfile.h"
 
 
 int main() {
@@ -32,9 +33,7 @@ int main() {
     //SubjectsList(); // Display list of subjects 
 
     //processRequests(requests, tutors); // Process and match requests to tutors
-    string username;
-    cin >> username;
-    makeRequest(username); // Make a request as a student
+
     //makeAccount(); // Create a new user account (tutor or student)
     //TutorSearchMenu(); // Search for tutors by ID or subject
     //sessions.display(); // Display session history
@@ -44,7 +43,7 @@ int main() {
 
     //password(users); // User login and dashboard access
 
-    /*
+    
     cout << "Welcome to EduConnect!" << endl;
     cout << "Would you like to (1) Login or (2) Create an Account? ";
     int choice;
@@ -57,6 +56,12 @@ int main() {
     } else {
         cout << "Invalid choice. Exiting." << endl;
     }
-    */
+    
+   //makeAccount();
+    //viewTutorProfile("tutor123"); // View tutor profile
+    //editProfile("tutor123"); // Edit tutor profile
+
     return 0;
 }
+
+

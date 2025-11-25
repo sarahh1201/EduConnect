@@ -3,3 +3,6 @@ ratingID,tutorUsername, studentUsername, ratingValue, comments
 2,JCameron,EDavis,4,Very helpful
 3,BRoss,HRoss,5,Great explanations
 4,JCameron,SHill,4,Great!
+5,tutor123,SHill,4,Amazing!
+6,tutor123,EDavis,5,I learned a lot!
+7,tutor123,RBrown,1,I still don't understand anything 

@@ -59,7 +59,8 @@
     "memory": "cpp",
     "list": "cpp",
     "print": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "forward_list": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",

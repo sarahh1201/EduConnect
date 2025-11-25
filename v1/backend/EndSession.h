@@ -19,11 +19,16 @@ void EndSession(string &username)
     {
         if (current->data.sessionID == sessionID)
         {
-            current->data.status = "ended";
             found = true;
             break;
         }
         current = current->next;
+    }
+
+    if (!found)
+    {
+        cout << "Session ID not found.\n";
+        return;
     }
 
     if (current->data.studentUsername == username || current->data.tutorUsername == username)

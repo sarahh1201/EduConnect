@@ -162,6 +162,37 @@ vector<Tutor> loadTutorsCSV()
     return tutors;
 }
 
+void saveTutorsCSV(const vector<Tutor> &tutors)
+{
+    ofstream file(tutorsDataPath, ios::trunc); // Clear + rewrite
+
+    if (!file.is_open())
+    {
+        cerr << "ERROR: Could not open tutors CSV for writing!" << endl;
+        return;
+    }
+
+    file << "tutorID,name,username,subjects,email,rating,available\n";
+
+    for (const auto &t : tutors)
+    {
+        file << t.tutorID << ","
+             << t.name << ","
+             << t.username << ",";
+        for (size_t i = 0; i < t.subjects.size(); ++i)
+        {
+            file << t.subjects[i];
+            if (i < t.subjects.size() - 1)
+                file << ";";
+        }
+        file << "," << t.email << ","
+             << t.rating << ","
+             << (t.available ? "true" : "false") << "\n";
+    }
+
+    file.close();
+}
+
 Node *buildTutorTreeFromCSV()
 {
     vector<Tutor> tutors = loadTutorsCSV(); // loads from CSV
@@ -333,30 +364,49 @@ SessionHistory loadSessionsCSV()
     return history;
 }
 
+vector<Session> toVector(const SessionHistory &history) {
+    vector<Session> sessions;
+    SessionNode *current = history.head;
+
+    while (current) {
+        sessions.push_back(current->data);
+        current = current->next;
+    }
+    return sessions;
+}
+
+
 void saveSessionsCSV(const SessionHistory &history)
 {
+    vector<Session> sessions = toVector(history);
+
+    // Sort sessions by sessionID
+    sort(sessions.begin(), sessions.end(), [](const Session &a, const Session &b) {
+        return a.sessionID < b.sessionID;
+    });
+
     ofstream file(sessionsDataPath, ios::trunc);
     if (!file.is_open())
     {
         cerr << "Cannot open sessions CSV for writing!\n";
         return;
     }
+
     file << "sessionID,subject,description,tutorUsername,studentUsername,requestID,status\n";
 
-    SessionNode *current = history.head;
-    while (current)
-    {
-        file << current->data.sessionID << ","
-             << current->data.subject << ","
-             << current->data.description << ","
-             << current->data.tutorUsername << ","
-             << current->data.studentUsername << ","
-             << current->data.requestID << ","
-             << current->data.status << "\n";
-        current = current->next;
+    for (const auto &s : sessions) {
+        file << s.sessionID << ","
+             << s.subject << ","
+             << s.description << ","
+             << s.tutorUsername << ","
+             << s.studentUsername << ","
+             << s.requestID << ","
+             << s.status << "\n";
     }
+
     file.close();
 }
+
 
 // ----------------- CSV Subject Loaders -----------------
 const vector<string> loadSubjectsCSV()

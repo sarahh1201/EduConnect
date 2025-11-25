@@ -8,6 +8,7 @@
 #include "TutorSearch.h"
 #include "EndSession.h"
 #include "GiveRating.h"
+#include "EditProfile.h"
 
 #include "AcceptRequest.h"
 
@@ -42,7 +43,8 @@ void TutorDashboard(string tutorUsername)
     cout << "2. Accept Request" << endl;
     cout << "3. View Active Sessions" << endl;
     cout << "4. End Session" << endl;
-    cout << "5. Logout" << endl;
+    cout << "5. Edit Profile" << endl;
+    cout << "6. Logout" << endl;
     cout << "Please select an option: ";
 
     
@@ -64,6 +66,9 @@ void TutorDashboard(string tutorUsername)
         EndSession(tutorUsername);
         break;
     case 5:
+        editProfile(tutorUsername);
+        break;
+    case 6:
         cout << "Logging out..." << endl;
         return;
     default:
