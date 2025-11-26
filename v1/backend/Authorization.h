@@ -158,6 +158,13 @@ void password(vector<User>& users) {
 		cin >> password;
 		cin.ignore(); // Clear newline character from buffer
 
+		if (userID == "admin" && password =="admin")
+		{
+			adminDashboard();
+			return; // Exit after admin dashboard
+		}
+		
+
         User* user = verifyUser(users, userID, password);
         if (user) {
             cout << "Login successful! Welcome, " 

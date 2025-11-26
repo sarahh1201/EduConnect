@@ -6,6 +6,7 @@
 #include <vector>
 using namespace std;
 
+// Allow tutors to edit their profile information
 void editProfile(string username) {
     vector<Tutor> tutors = loadTutorsCSV();
     for (auto &t : tutors)
@@ -16,7 +17,7 @@ void editProfile(string username) {
             cout << "Enter new email (or press enter to keep current): ";
             string newEmail;
             getline(cin, newEmail);
-            if (!newEmail.empty()) {
+            if (!newEmail.empty()) { // Update only if input is not empty
                 t.email = newEmail;
             }
 
@@ -27,7 +28,7 @@ void editProfile(string username) {
             cout << "\nEnter new subjects separated by semicolon (or press enter to keep current): ";
             string newSubjects;
             getline(cin, newSubjects);
-            if (!newSubjects.empty()) {
+            if (!newSubjects.empty()) { // Update only if input is not empty
                 t.subjects.clear();
                 stringstream ss(newSubjects);
                 string subject;
@@ -39,7 +40,7 @@ void editProfile(string username) {
             cout << "Set availability (1 for Available, 0 for Not Available, or press enter to keep current): ";
             string availabilityInput;
             getline(cin, availabilityInput);
-            if (!availabilityInput.empty()) {
+            if (!availabilityInput.empty()) {  // Update only if input is not empty
                 t.available = (availabilityInput == "1");
             }
             cout << "Profile updated successfully!\n";

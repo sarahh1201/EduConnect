@@ -14,21 +14,19 @@
 
 
 int main() {
-    // Load data from CSV files
+    // Load data from CSV files (can be deleted later if not needed)
     vector<User> users = loadUsersCSV();
-    vector<Tutor> tutors = loadTutorsCSV();
-    vector<Request> requests = loadRequestsCSV();
-    SessionHistory sessions = loadSessionsCSV();
-    vector<string> subjects = loadSubjectsCSV();
+    //vector<Tutor> tutors = loadTutorsCSV();
+    //vector<Request> requests = loadRequestsCSV();
+    //SessionHistory sessions = loadSessionsCSV();
+    //vector<string> subjects = loadSubjectsCSV();
 
-    cout << "Loaded " << users.size() << " users.\n";
-    cout << "Loaded " << tutors.size() << " tutors.\n";
-    cout << "Loaded " << requests.size() << " requests.\n";
-    cout << "Loaded " << subjects.size() << " subjects.\n";
-    cout << "Loaded session history:\n";
-    sessions.display();
+    // Debug output to verify loading (can be removed later)
+    //cout << "Loaded " << users.size() << " users.\n";
+    //cout << "Loaded " << tutors.size() << " tutors.\n";
+    //cout << "Loaded " << requests.size() << " requests.\n";
+    //cout << "Loaded " << subjects.size() << " subjects.\n";
 
-    clearScreen_verify(); // Clear screen before starting
     
     //SubjectsList(); // Display list of subjects 
 
