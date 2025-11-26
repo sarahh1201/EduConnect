@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Qt Application with cppdbg",
+      "name": "Debug Qt Application with lldb",
       "type": "cppdbg",
       "request": "launch",
       "program": "${command:cmake.launchTargetPath}",
@@ -11,8 +11,8 @@
       "visualizerFile": "${command:qt-cpp.natvis}",
       "showDisplayString": true,
       "linux": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "/usr/bin/gdb",
+        "MIMode": "lldb",
+        "miDebuggerPath": "/usr/bin/lldb",
         "sourceFileMap": {
           "/home/qt/work/qt": "${command:qt-cpp.sourceDirectory}"
         }
@@ -45,21 +45,8 @@
             "value": "${command:qt-cpp.QML_IMPORT_PATH}"
           }
         ],
-        "MIMode": "gdb",
-        "miDebuggerPath": "${command:qt-cpp.minGWgdb}"
+        "MIMode": "lldb"
       }
-    },
-    {
-      "name": "(lldb) Launch",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "enter program name, for example ${workspaceFolder}/a.out",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "lldb"
     }
     
 
