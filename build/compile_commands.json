@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build",
-  "command": "/usr/bin/clang++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/include\" -isystem /Users/sarahhill/Qt/6.10.0/macos/lib/QtCore.framework/Headers -iframework /Users/sarahhill/Qt/6.10.0/macos/lib -isystem /Users/sarahhill/Qt/6.10.0/macos/mkspecs/macx-clang -isystem /Users/sarahhill/Qt/6.10.0/macos/include -isystem /Users/sarahhill/Qt/6.10.0/macos/lib/QtWidgets.framework/Headers -isystem /Users/sarahhill/Qt/6.10.0/macos/lib/QtGui.framework/Headers -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk -mmacosx-version-min=13 -o CMakeFiles/EduConnect.dir/EduConnect_autogen/mocs_compilation.cpp.o -c \"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/mocs_compilation.cpp\"",
-  "file": "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/mocs_compilation.cpp",
-  "output": "CMakeFiles/EduConnect.dir/EduConnect_autogen/mocs_compilation.cpp.o"
-}
-]
