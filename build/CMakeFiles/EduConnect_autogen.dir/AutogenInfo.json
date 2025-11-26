@@ -367,63 +367,7 @@
 	"CROSS_CONFIG" : false,
 	"DEP_FILE" : "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "EduConnect_autogen/timestamp",
-	"HEADERS" : 
-	[
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/admindashboard.h",
-			"MU",
-			"EWIEGA46WW/moc_admindashboard.cpp",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/backend/Backend.h",
-			"MU",
-			"FVSNT77ZGO/moc_Backend.cpp",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/backend/Decode.h",
-			"MU",
-			"FVSNT77ZGO/moc_Decode.cpp",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/backend/MakeRequest.h",
-			"MU",
-			"FVSNT77ZGO/moc_MakeRequest.cpp",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/backend/RequestHeap.h",
-			"MU",
-			"FVSNT77ZGO/moc_RequestHeap.cpp",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/backend/RequestProcess.h",
-			"MU",
-			"FVSNT77ZGO/moc_RequestProcess.cpp",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/loginwindow.h",
-			"MU",
-			"EWIEGA46WW/moc_loginwindow.cpp",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/studentdashboard.h",
-			"MU",
-			"EWIEGA46WW/moc_studentdashboard.cpp",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/tutordashboard.h",
-			"MU",
-			"EWIEGA46WW/moc_tutordashboard.cpp",
-			null
-		]
-	],
+	"HEADERS" : [],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/include",
 	"MOC_COMPILATION_FILE" : "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/mocs_compilation.cpp",
@@ -481,39 +425,7 @@
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 10,
 	"SETTINGS_FILE" : "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/CMakeFiles/EduConnect_autogen.dir/AutogenUsed.txt",
-	"SOURCES" : 
-	[
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/admindashboard.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/backend/Decode.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/loginwindow.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/main.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/studentdashboard.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v_ui/tutordashboard.cpp",
-			"MU",
-			null
-		]
-	],
+	"SOURCES" : [],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
 	"UIC_SKIP" : [],
