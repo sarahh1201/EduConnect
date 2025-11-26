@@ -69,3 +69,28 @@ void processRequests(const vector<Request>& requests, const vector<Tutor>& tutor
         }
     }
 }
+
+void suggestTutorsForStudent(const string& studentUsername) {
+    vector<Request> requests = loadRequestsCSV();
+    vector<Tutor> tutors = loadTutorsCSV();
+
+    cout << "Suggested Tutors for Student: " << studentUsername << endl;
+
+    for (const auto& req : requests) {
+        if (req.studentUsername == studentUsername) {
+            cout << "\nFor Request ID: " << req.requestID
+                 << " | Subject: " << req.subject
+                 << " | Urgency: " << req.urgency << endl;
+
+            vector<Tutor> matches = matchTutors(req, tutors);
+
+            if (!matches.empty()) {
+                cout << "Top Suggested Tutor: " << matches[0].name
+                     << " | Rating: " << matches[0].rating
+                     << " | Available: " << (matches[0].available ? "Yes" : "No") << endl;
+            } else {
+                cout << "No available tutors found for this request.\n";
+            }
+        }
+    }
+}

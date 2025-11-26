@@ -72,7 +72,7 @@ void TutorDashboard(string tutorUsername)
         break;
     case 5:
         clearScreen();
-        editProfile(tutorUsername);
+        editProfileTutor(tutorUsername);
         break;
     case 6:
         cout << "Logging out..." << endl;
@@ -88,11 +88,13 @@ void StudentDashboard(string studentUsername)
     cout << "Welcome, " << studentUsername << "!" << endl;
 
     cout << "1. Make a Request" << endl;
-    cout << "2. Search for Tutors" << endl;
-    cout << "3. Active Sessions" << endl;
-    cout << "4. Give Rating" << endl;
-    cout << "5. End Session" << endl;
-    cout << "6. Logout" << endl;
+    cout << "2. View Suggested Tutors" << endl;
+    cout << "3. Search for Tutors" << endl;
+    cout << "4. Active Sessions" << endl;
+    cout << "5. Give Rating" << endl;
+    cout << "6. End Session" << endl;
+    cout << "7. Edit Profile" << endl;
+    cout << "7. Logout" << endl;
     cout << "Please select an option: ";
 
     int choice;
@@ -106,22 +108,32 @@ void StudentDashboard(string studentUsername)
         break;
     case 2:
         clearScreen();
-        TutorSearchMenu();
+        suggestTutorsForStudent(studentUsername);
         break;
+        
     case 3:
         clearScreen();
-        viewActiveSessions(studentUsername);
+        TutorSearchMenu();
         break;
     case 4:
         clearScreen();
-        GiveRating(studentUsername);
+        viewActiveSessions(studentUsername);
         break;
     case 5:
+        clearScreen();
+        GiveRating(studentUsername);
+        break;
+    case 6:
         clearScreen();
         viewActiveSessions(studentUsername);
         EndSession(studentUsername);
         break;
-    case 6:
+    
+    case 7:
+        clearScreen();
+        editProfileStudent(studentUsername);
+        break;
+    case 8:
         cout << "Logging out..." << endl;
         return;
     default:

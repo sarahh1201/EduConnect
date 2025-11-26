@@ -7,7 +7,7 @@
 using namespace std;
 
 // Allow tutors to edit their profile information
-void editProfile(string username) {
+void editProfileTutor(string username) {
     vector<Tutor> tutors = loadTutorsCSV();
     for (auto &t : tutors)
     {
@@ -65,6 +65,26 @@ void viewTutorProfile(string username) {
             }
             cout << "\nRating: " << t.rating << "\n";
             cout << "Availability: " << (t.available ? "Available" : "Not Available") << "\n";
+            break;
+        }
+    }  
+}
+
+void editProfileStudent(string username) {
+    vector<User> users = loadUsersCSV();
+    for (auto &u : users)
+    {
+        if (u.username == username && u.userType == 0) { // Ensure it's a student
+            cout << "Editing profile for " << u.firstName + " " + u.lastName << " (" << u.username << ")\n";
+            cout << "Current Email: " << u.email << "\n";
+            cout << "Enter new email (or press enter to keep current): ";
+            string newEmail;
+            getline(cin, newEmail);
+            if (!newEmail.empty()) { // Update only if input is not empty
+                u.email = newEmail;
+            }
+            cout << "Profile updated successfully!\n";
+            saveUsersCSV(users);
             break;
         }
     }  
