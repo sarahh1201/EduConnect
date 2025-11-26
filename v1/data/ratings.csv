@@ -5,4 +5,4 @@ ratingID,tutorUsername, studentUsername, ratingValue, comments
 4,JCameron,SHill,4,Great!
 5,tutor123,SHill,4,Amazing!
 6,tutor123,EDavis,5,I learned a lot!
-7,tutor123,RBrown,1,I still don't understand anything 
+7,tutor123,RBrown,1,Bad
