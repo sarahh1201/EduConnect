@@ -4,3 +4,4 @@ sessionID,subject,description,tutorUsername,studentUsername,requestID,status
 3,English,Looking for essay writing tips,JBob,LSmith,3,accepted
 4,English,Essay due in two days,JCameron,SHill,7,reviewed
 5,Math,I don't understand anything ,tutor123,RBrown,14,reviewed
+6,Math,My final exam is in 2 weeks,tutor123,LSmith,13,accepted

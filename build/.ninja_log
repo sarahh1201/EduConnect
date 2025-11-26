@@ -1,0 +1,40 @@
+# ninja log v6
+2	171	1764191426524548467	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/CMakeFiles/cmake.verify_globs	a5d71a5612718c2
+172	1495	1764191427998509367	EduConnect_autogen/timestamp	c0053605ef1c4ce7
+172	1495	1764191427998509367	EduConnect_autogen/mocs_compilation.cpp	c0053605ef1c4ce7
+172	1495	1764191427998509367	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/timestamp	c0053605ef1c4ce7
+172	1495	1764191427998509367	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/mocs_compilation.cpp	c0053605ef1c4ce7
+1501	4803	1764191428023497210	CMakeFiles/EduConnect.dir/backend/Decode.cpp.o	f64792978a3d1fc0
+1500	5976	1764191428021936467	CMakeFiles/EduConnect.dir/main.cpp.o	7b90812bbe14b5cc
+1499	6689	1764191428021358193	CMakeFiles/EduConnect.dir/EduConnect_autogen/mocs_compilation.cpp.o	dcf21709681fd9e2
+1500	6803	1764191428022790107	CMakeFiles/EduConnect.dir/tutordashboard.cpp.o	b8d868d5f0ac16a5
+1500	7025	1764191428022233124	CMakeFiles/EduConnect.dir/loginwindow.cpp.o	df475d11bab43899
+1501	7055	1764191428023151637	CMakeFiles/EduConnect.dir/admindashboard.cpp.o	f4fd4a4ddb664f7e
+1500	7287	1764191428022527948	CMakeFiles/EduConnect.dir/studentdashboard.cpp.o	9195c0974fef581a
+7288	7584	1764191433809704536	EduConnect.app/Contents/MacOS/EduConnect	a701f60b2112a68a
+5	177	1764191523755447402	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/CMakeFiles/cmake.verify_globs	a5d71a5612718c2
+203	265	1764191523953650489	EduConnect_autogen/timestamp	c0053605ef1c4ce7
+203	265	1764191523953650489	EduConnect_autogen/mocs_compilation.cpp	c0053605ef1c4ce7
+203	265	1764191523953650489	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/timestamp	c0053605ef1c4ce7
+203	265	1764191523953650489	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/mocs_compilation.cpp	c0053605ef1c4ce7
+270	2308	1764191524019945039	CMakeFiles/EduConnect.dir/backend/Decode.cpp.o	f64792978a3d1fc0
+266	3339	1764191524016192989	CMakeFiles/EduConnect.dir/main.cpp.o	7b90812bbe14b5cc
+265	3738	1764191524015769794	CMakeFiles/EduConnect.dir/EduConnect_autogen/mocs_compilation.cpp.o	dcf21709681fd9e2
+268	3951	1764191524018393462	CMakeFiles/EduConnect.dir/tutordashboard.cpp.o	b8d868d5f0ac16a5
+266	4010	1764191524016650517	CMakeFiles/EduConnect.dir/loginwindow.cpp.o	df475d11bab43899
+269	4099	1764191524019307767	CMakeFiles/EduConnect.dir/admindashboard.cpp.o	f4fd4a4ddb664f7e
+267	4306	1764191524017833938	CMakeFiles/EduConnect.dir/studentdashboard.cpp.o	9195c0974fef581a
+4306	4605	1764191528056427138	EduConnect.app/Contents/MacOS/EduConnect	a701f60b2112a68a
+4	187	1764191682198904963	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/CMakeFiles/cmake.verify_globs	a5d71a5612718c2
+213	276	1764191682407528016	EduConnect_autogen/timestamp	c0053605ef1c4ce7
+213	276	1764191682407528016	EduConnect_autogen/mocs_compilation.cpp	c0053605ef1c4ce7
+213	276	1764191682407528016	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/timestamp	c0053605ef1c4ce7
+213	276	1764191682407528016	/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/build/EduConnect_autogen/mocs_compilation.cpp	c0053605ef1c4ce7
+279	2434	1764191682472925385	CMakeFiles/EduConnect.dir/backend/Decode.cpp.o	f64792978a3d1fc0
+277	3579	1764191682471173607	CMakeFiles/EduConnect.dir/main.cpp.o	7b90812bbe14b5cc
+276	4062	1764191682470813743	CMakeFiles/EduConnect.dir/EduConnect_autogen/mocs_compilation.cpp.o	dcf21709681fd9e2
+278	4302	1764191682472207658	CMakeFiles/EduConnect.dir/tutordashboard.cpp.o	b8d868d5f0ac16a5
+277	4404	1764191682471607218	CMakeFiles/EduConnect.dir/loginwindow.cpp.o	df475d11bab43899
+278	4445	1764191682472593021	CMakeFiles/EduConnect.dir/admindashboard.cpp.o	f4fd4a4ddb664f7e
+277	4640	1764191682471834586	CMakeFiles/EduConnect.dir/studentdashboard.cpp.o	9195c0974fef581a
+4640	4932	1764191686834250524	EduConnect.app/Contents/MacOS/EduConnect	a701f60b2112a68a
