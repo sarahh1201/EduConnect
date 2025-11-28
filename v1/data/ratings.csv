@@ -6,3 +6,6 @@ ratingID,tutorUsername, studentUsername, ratingValue, comments
 5,tutor123,SHill,4,Amazing!
 6,tutor123,EDavis,5,I learned a lot!
 7,tutor123,RBrown,1,Bad
+8,PKindred,LSmith,3,Good but could improve
+9,JBob,LSmith,4,Helpful session
+10,JBob,SHill,2,Not very clear

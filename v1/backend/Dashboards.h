@@ -18,7 +18,7 @@ using namespace std;
 
 void tutorHeader()
 {
-    clearScreen();
+    clearScreen_verify();
     cout << "--------------------------------" << endl;
     cout << "        Tutor Dashboard" << endl;
     cout << "--------------------------------" << endl;
@@ -26,7 +26,7 @@ void tutorHeader()
 
 void studentHeader()
 {
-    clearScreen();
+    clearScreen_verify();
     cout << "--------------------------------" << endl;
     cout << "       Student Dashboard" << endl;
     cout << "--------------------------------" << endl;
@@ -34,6 +34,9 @@ void studentHeader()
 
 void TutorDashboard(string tutorUsername)
 {
+    int run = 1;
+    while (run)
+    {
     tutorHeader();
 
     cout << "Welcome, " << tutorUsername << "!" << endl;
@@ -76,14 +79,19 @@ void TutorDashboard(string tutorUsername)
         break;
     case 6:
         cout << "Logging out..." << endl;
+        run = 0;
         return;
     default:
         cout << "Invalid choice. Please try again." << endl;
     }
 }
+}
 
 void StudentDashboard(string studentUsername)
 {
+    int run = 1;
+    while (run)
+    {
     studentHeader();
     cout << "Welcome, " << studentUsername << "!" << endl;
 
@@ -94,7 +102,7 @@ void StudentDashboard(string studentUsername)
     cout << "5. Give Rating" << endl;
     cout << "6. End Session" << endl;
     cout << "7. Edit Profile" << endl;
-    cout << "7. Logout" << endl;
+    cout << "8. Logout" << endl;
     cout << "Please select an option: ";
 
     int choice;
@@ -135,16 +143,21 @@ void StudentDashboard(string studentUsername)
         break;
     case 8:
         cout << "Logging out..." << endl;
+        run = 0;
         return;
     default:
         cout << "Invalid choice. Please try again." << endl;
     }
-
+}
 }
 
 void adminDashboard()
 {
-    clearScreen();
+    int run = 1;
+    while (run)
+    {
+    
+    clearScreen_verify();
     cout << "--------------------------------" << endl;
     cout << "        Admin Dashboard" << endl;
     cout << "--------------------------------" << endl;
@@ -225,8 +238,10 @@ void adminDashboard()
         break;
     case 6:
         cout << "Logging out..." << endl;
+        run = 0;
         return;
     default:
         cout << "Invalid choice. Please try again." << endl;
     }
+}
 }   

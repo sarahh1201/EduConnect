@@ -73,8 +73,10 @@ void processRequests(const vector<Request>& requests, const vector<Tutor>& tutor
 void suggestTutorsForStudent(const string& studentUsername) {
     vector<Request> requests = loadRequestsCSV();
     vector<Tutor> tutors = loadTutorsCSV();
+    bool found = false;
 
     cout << "Suggested Tutors for Student: " << studentUsername << endl;
+    
 
     for (const auto& req : requests) {
         if (req.studentUsername == studentUsername) {
@@ -83,6 +85,7 @@ void suggestTutorsForStudent(const string& studentUsername) {
                  << " | Urgency: " << req.urgency << endl;
 
             vector<Tutor> matches = matchTutors(req, tutors);
+            found = true;
 
             if (!matches.empty()) {
                 cout << "Top Suggested Tutor: " << matches[0].name
@@ -92,5 +95,8 @@ void suggestTutorsForStudent(const string& studentUsername) {
                 cout << "No available tutors found for this request.\n";
             }
         }
+    }
+    if (!found) {
+        cout << "No requests found for student: " << studentUsername << endl;
     }
 }

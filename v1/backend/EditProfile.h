@@ -17,6 +17,7 @@ void editProfileTutor(string username) {
             cout << "Enter new email (or press enter to keep current): ";
             string newEmail;
             getline(cin, newEmail);
+            cin.ignore();
             if (!newEmail.empty()) { // Update only if input is not empty
                 t.email = newEmail;
             }
@@ -80,6 +81,7 @@ void editProfileStudent(string username) {
             cout << "Enter new email (or press enter to keep current): ";
             string newEmail;
             getline(cin, newEmail);
+            cin.ignore();
             if (!newEmail.empty()) { // Update only if input is not empty
                 u.email = newEmail;
             }

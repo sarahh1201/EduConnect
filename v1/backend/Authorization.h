@@ -160,6 +160,7 @@ void password(vector<User>& users) {
 
 		if (userID == "admin" && password =="admin")
 		{
+			cout << "Login successful." << endl;
 			adminDashboard();
 			return; // Exit after admin dashboard
 		}

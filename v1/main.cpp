@@ -41,9 +41,14 @@ int main() {
 
     //password(users); // User login and dashboard access
 
-    
-    cout << "Welcome to EduConnect!" << endl;
-    cout << "Would you like to (1) Login or (2) Create an Account? ";
+    cout << "--------------------------------" << endl;    
+    cout << "     Welcome to EduConnect!" << endl;
+    cout << "--------------------------------" << endl;
+    cout << "Developed by ScholarStake" << endl << endl;
+    cout << "1. Login" << endl;
+    cout << "2. Create Account" << endl;
+    cout << "Please select an option: ";
+
     int choice;
     cin >> choice;
     cin.ignore(); 
