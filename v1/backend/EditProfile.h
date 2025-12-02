@@ -6,6 +6,8 @@
 #include <vector>
 using namespace std;
 
+// This file contains functions for editing user profiles
+
 // Allow tutors to edit their profile information
 void editProfileTutor(string username) {
     vector<Tutor> tutors = loadTutorsCSV();

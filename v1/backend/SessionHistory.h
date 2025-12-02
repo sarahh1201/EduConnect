@@ -4,6 +4,8 @@
 #include <string>
 using namespace std;
 
+// This file contains structures and functions for managing session history
+
 struct Session
 {
     int sessionID;

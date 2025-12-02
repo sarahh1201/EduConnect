@@ -6,6 +6,8 @@
 
 using namespace std;
 
+// This file contains functions for managing a min-heap data structure for requests
+
 // Now for the very lovely Min-Heap algorithm
 // Note this is ALL using a 0-based array architecture, since I don't wanna figure out the 1-based implementation
 

@@ -5,6 +5,8 @@
 #include "Decode.h"
 using namespace std;
 
+// This file contains functions for ending sessions and viewing active/ended sessions
+
 void EndSession(string &username)
 {
     int sessionID;

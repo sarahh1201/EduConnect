@@ -11,8 +11,9 @@
 #include "EditProfile.h"
 #include "QuickSort.h"
 #include "RequestProcess.h"
-
 #include "AcceptRequest.h"
+
+// This file contains functions for displaying and managing user dashboards
 
 using namespace std;
 

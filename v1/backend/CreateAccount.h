@@ -4,6 +4,8 @@
 #include "Decode.h"
 using namespace std;
 
+// This file contains functions for creating new user accounts (students and tutors)
+
 void addTutorAccount(User* user) {
     Tutor newTutor;
     cout << "Assigning Tutor ID..." << endl;

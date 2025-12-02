@@ -3,6 +3,8 @@
 #include "Decode.h"
 using namespace std;
 
+// This file contains functions for sorting tutors by rating using QuickSort
+
 double partition(vector<Tutor>& tutors, int low, int high) // How we do the array 'split':
 {
 	double pivotPoint = tutors[high].rating; // Just assign the last variable of the array to be our 'pivot'

@@ -6,6 +6,8 @@
 #include "Decode.h"
 using namespace std;
 
+// This file contains functions for processing student requests and matching them with tutors
+
 double computeScore(const Request& req, const Tutor& tutor) {// compute a score for a tutor based on rating and availability   
     bool subjectMatch = false;
     for (const auto& s : tutor.subjects) {

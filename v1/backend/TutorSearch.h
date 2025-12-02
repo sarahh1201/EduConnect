@@ -9,6 +9,8 @@
 #include "ClearScreen.h"
 #include "Decode.h"
 
+// This file contains functions for searching tutors by various criteria
+
 using namespace std;
 
 // I didn't really need to implement any classes for this, so the header file just stores all the searching algorithms

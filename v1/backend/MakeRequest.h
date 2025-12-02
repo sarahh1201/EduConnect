@@ -6,6 +6,8 @@
 
 using namespace std;
 
+// This file contains functions for making new tutoring requests
+
 void makeRequest(string studentUsername) {
     Request newRequest;
     newRequest.studentUsername = studentUsername;

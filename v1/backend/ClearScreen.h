@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <iostream>
 
+// This file contains functions for clearing the console screen
+
 using namespace std;
 // Function to clear the console screen
 void clearScreen() {

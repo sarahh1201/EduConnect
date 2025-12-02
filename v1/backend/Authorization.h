@@ -9,6 +9,8 @@
 #include "ClearScreen.h"
 #include "Dashboards.h"
 
+// This file contains functions for user authorization, including login, password recovery, and password changing.
+
 using namespace std;
 
 // ----------------- User Verification -----------------

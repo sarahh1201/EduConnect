@@ -2,17 +2,12 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 #include <unordered_map>
 #include "Decode.h"
 using namespace std;
 
-#pragma once
-
-#include <iostream>
-#include <vector>
-#include <string>
-#include "Decode.h"
-using namespace std;
+// This file contains functions for giving ratings to tutors and updating their average ratings
 
 void updateTutorAverage(const std::string &tutorUsername) {
     vector<Rating> ratings = loadRatingsCSV();

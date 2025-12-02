@@ -3,6 +3,8 @@
 using namespace std;
 
 
+// This file contains functions for managing a Binary Search Tree (BST)
+
 struct Node // Creating a base node definition the Binary Search Tree will follow
 {
 	int data;

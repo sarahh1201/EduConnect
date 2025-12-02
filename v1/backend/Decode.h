@@ -11,6 +11,9 @@
 #include "RequestHeap.h"
 using namespace std;
 
+// File paths for CSV data
+
+// Update these paths as necessary for your environment
 string userDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/user.csv";
 string tutorsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/tutors.csv";
 string requestsDataPath = "/Users/sarahhill/Documents/Workspaces/Algorithms & Data Structures/EduConnect/v1/data/requests.csv";

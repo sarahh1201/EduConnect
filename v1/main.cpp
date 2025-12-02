@@ -14,33 +14,20 @@
 
 
 int main() {
-    // Load data from CSV files (can be deleted later if not needed)
+    // Before compiling ensure that the file paths in Decode.h are correct for your environment
+
     vector<User> users = loadUsersCSV();
     //vector<Tutor> tutors = loadTutorsCSV();
     //vector<Request> requests = loadRequestsCSV();
     //SessionHistory sessions = loadSessionsCSV();
     //vector<string> subjects = loadSubjectsCSV();
 
-    // Debug output to verify loading (can be removed later)
+    // Debug output to verify loading functions
     //cout << "Loaded " << users.size() << " users.\n";
     //cout << "Loaded " << tutors.size() << " tutors.\n";
     //cout << "Loaded " << requests.size() << " requests.\n";
     //cout << "Loaded " << subjects.size() << " subjects.\n";
-
     
-    //SubjectsList(); // Display list of subjects 
-
-    //processRequests(requests, tutors); // Process and match requests to tutors
-
-    //makeAccount(); // Create a new user account (tutor or student)
-    //TutorSearchMenu(); // Search for tutors by ID or subject
-    //sessions.display(); // Display session history
-
-    //ViewRequests(); // View requests as a tutor
-    //AcceptRequest(); // Accept a request as a tutor
-
-    //password(users); // User login and dashboard access
-
     cout << "--------------------------------" << endl;    
     cout << "     Welcome to EduConnect!" << endl;
     cout << "--------------------------------" << endl;
@@ -59,8 +46,21 @@ int main() {
     } else {
         cout << "Invalid choice. Exiting." << endl;
     }
-    
-   //makeAccount();
+
+    // Following functions are for testing purposes only, they have been integrated into dashboards
+    //SubjectsList(); // Display list of subjects 
+
+    //processRequests(requests, tutors); // Process and match requests to tutors
+
+    //makeAccount(); // Create a new user account (tutor or student)
+    //TutorSearchMenu(); // Search for tutors by ID or subject
+    //sessions.display(); // Display session history
+
+    //ViewRequests(); // View requests as a tutor
+    //AcceptRequest(); // Accept a request as a tutor
+
+    //password(users); // User login and dashboard access
+    //makeAccount();
     //viewTutorProfile("tutor123"); // View tutor profile
     //editProfile("tutor123"); // Edit tutor profile
 

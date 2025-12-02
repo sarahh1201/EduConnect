@@ -5,6 +5,8 @@
 #include <iostream>
 using namespace std;
 
+// This file contains functions for tutors to view and accept requests
+
 // Helper function to check if tutor teaches a subject
 bool tutorTeaches(const Tutor &t, const string &subject)
 {
