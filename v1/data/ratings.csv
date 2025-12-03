@@ -9,3 +9,5 @@ ratingID,tutorUsername, studentUsername, ratingValue, comments
 8,PKindred,LSmith,3,Good but could improve
 9,JBob,LSmith,4,Helpful session
 10,JBob,SHill,2,Not very clear
+11,JBob,SHill,4,You're getting better
+12,BRoss,SHill,4,Great advice!

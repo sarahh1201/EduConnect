@@ -1,7 +1,10 @@
 sessionID,subject,description,tutorUsername,studentUsername,requestID,status
-1,Science,I don't understand anything,PKindred,HRoss,5,ended
-2,Math,Needs help with calculus,PKindred,LSmith,1,accepted
-3,English,Looking for essay writing tips,JBob,LSmith,3,accepted
-4,English,Essay due in two days,JCameron,SHill,7,reviewed
-5,Math,I don't understand anything ,tutor123,RBrown,14,reviewed
+9,Art,I need to finish my portfolio,BRoss,SHill,17,reviewed
+7,Art,Shading,BRoss,EDavis,11,ended
 6,Math,My final exam is in 2 weeks,tutor123,LSmith,13,accepted
+5,Math,I don't understand anything ,tutor123,RBrown,14,reviewed
+4,English,Essay due in two days,JCameron,SHill,7,reviewed
+3,English,Looking for essay writing tips,JBob,LSmith,3,accepted
+2,Math,Needs help with calculus,PKindred,LSmith,1,accepted
+1,Science,I don't understand anything,PKindred,HRoss,5,ended
+8,History,Help me ,JBob,SHill,13,reviewed

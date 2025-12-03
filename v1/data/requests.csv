@@ -5,6 +5,7 @@ requestID,studentUsername,subject,urgency,description
 8,EDavis,Science,3,I have a test next week
 9,SHill,Math,4,Calc
 10,SHill,History,3,World War I
-11,EDavis,Art,3,Shading
 12,LSmith,Biology,4,I want to improve my grades.
-13,SHill,History,2,Help me 
+14,SHill,Physics,3,I don't understand the theory 
+15,SHill,History,3,Help
+16,SHill,Art,3,I want help with water colours
